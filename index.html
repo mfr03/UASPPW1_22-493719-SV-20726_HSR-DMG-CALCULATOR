@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2 order-sm-1 order-2" style="border: 2px solid black;">
+                <div class="col-sm-12 h-50">
+                    Character selection
+                </div>
+                <div class="col-sm-12 h-50">
+                    Cone selection
+                </div>
+            </div>
+            <div class="col-sm-2 order-sm-1 order-2" style="border: 2px solid black;">
+                <div class="col-sm-12 h-50">
+                    Equipment selection
+                </div>
+                <div class="col-sm-12 h-50">
+                    Enemies Stats
+                </div>
+            </div>
+            <div id="form-wrapper-input-output" class="col-sm-5 row-cols-1 order-sm-2 order-3">
+                <div id="form-input-stats" class="col-sm-12 row-cols-sm-1 bg-body-tertiary pb-2">
+                    <div class="col-sm-12 row justify-content-end">
+                        <div class="col-3 text-center">
+                            <p>Current</p>
+                        </div>
+                        <div class="col-3 text-center">
+                            <p>New</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 row justify-content-end mb-3">
+                        <div class="col-6 text-end">
+                            <p>Base Attack</p>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 row justify-content-end mb-3">
+                        <div class="col-6 text-end">
+                            <p>Flat Attack</p>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 row justify-content-end mb-3">
+                        <div class="col-6 text-end">
+                            <p>Base Defense</p>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 row justify-content-end mb-3">
+                        <div class="col-6 text-end">
+                            <p>Flat Defense</p>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 row justify-content-end mb-3">
+                        <div class="col-6 text-end">
+                            <p>Crit Rate %</p>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 row justify-content-end mb-3">
+                        <div class="col-6 text-end">
+                            <p>Crit Damage</p>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 row justify-content-end mb-3">
+                        <div class="col-6 text-end">
+                            <p>Break Effect %</p>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 row justify-content-end mb-3">
+                        <div class="col-6 text-end">
+                            <p>Elemental Damage Boost</p>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <button class="container btn btn-dark">aaa</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="form-output-damages" class="col-sm-12 mt-4 bg-body-tertiary">
+                    <div class="col-12 row justify-content-end pt-2">
+                        
+                        <div class="col-3 text-center">
+                            <p>Current</p>
+                        </div>
+                        <div class="col-3 text-center">
+                            <p>New</p>
+                        </div>
+                        <div class="col-3 text-center">
+                            <p>Change</p>
+                        </div>
+                    </div>
+                    <div class="col-12 row justify-content-end mb-3">
+                        <div class="col-3 text-end">
+                            Normal Attack
+                        </div>
+                        <div class="col-3 text-center">
+                            <p class="text-bg-dark rounded-">Current</p>
+                        </div>
+                        <div class="col-3 text-center">
+                            <p>New</p>
+                        </div>
+                        <div class="col-3 text-center">
+                            <p>Change</p>
+                        </div>
+                    </div>
+                    <div class="col-12 row justify-content-end mb-3">
+                        <div class="col-3 text-end">
+                            Skill 1
+                        </div>
+                        <div class="col-3 text-center">
+                            <p class="text-bg-dark rounded-">Current</p>
+                        </div>
+                        <div class="col-3 text-center">
+                            <p>New</p>
+                        </div>
+                        <div class="col-3 text-center">
+                            <p>Change</p>
+                        </div>
+                    </div>
+                    <div class="col-12 row justify-content-end mb-3">
+                        <div class="col-3 text-end">
+                            Skill 2
+                        </div>
+                        <div class="col-3 text-center">
+                            <p class="text-bg-dark rounded-">Current</p>
+                        </div>
+                        <div class="col-3 text-center">
+                            <p>New</p>
+                        </div>
+                        <div class="col-3 text-center">
+                            <p>Change</p>
+                        </div>
+                    </div>
+                    <div class="col-12 row justify-content-end mb-3">
+                        <div class="col-3 text-end">
+                            Ultimate
+                        </div>
+                        <div class="col-3 text-center">
+                            <p class="text-bg-dark rounded-">Current</p>
+                        </div>
+                        <div class="col-3 text-center">
+                            <p>New</p>
+                        </div>
+                        <div class="col-3 text-center">
+                            <p>Change</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 order-sm-3 order-1" style="border: 2px solid black;">
+                How to use:
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
