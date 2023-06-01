@@ -1,0 +1,13 @@
+
+#selection_1, #selection_2
+{
+    background-color: rgba(0, 0, 0, 0.2);
+    
+}
+
+body
+{
+    background-image: linear-gradient(to bottom right,#31394e,#1d212d,#191e33,#141829,#101321);
+    color: #ccc;
+};
+
