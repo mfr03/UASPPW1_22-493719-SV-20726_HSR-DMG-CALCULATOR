@@ -8,27 +8,41 @@
     <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
-<body>
-    <div class="container">
+<body style="min-height: 100vh;">
+    <div class="container mt-5">
         <div class="row">
-            <div id="selection_1" class="col-sm-2 order-sm-1 order-2">
-                <div class="col-sm-12 h-50">
-                    Character selection
-                </div>
-                <div class="col-sm-12 h-50">
-                    Cone selection
+            <div id="form-wrapper-selection-1" class="container col-sm-2 order-sm-1 order-2 mb-sm-0 mb-3">
+                <div class="row h-100">
+                    <div id="selection_1" class="col-sm-12 order-1 h-100">
+                        <div class="col-sm-12 h-50 d-flex flex-column">
+                            Character Selection
+                            <div id="carousel-characters" class="w-50 h-50">
+                                
+                            </div>
+                            <div id="character-customization" class="w-50 h-50">
+
+                            </div>
+                        </div>
+                        <div class="col-sm-12 h-50">
+                            Cone selection
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="selection_2" class="col-sm-2 order-sm-2 order-3">
-                <div class="col-sm-12 h-50">
-                    Equipment selection
-                </div>
-                <div class="col-sm-12 h-50">
-                    Enemies Stats
+            <div id="form-wrapper-selection-2" class="container col-sm-2 order-sm-1 order-2 mb-sm-0 mb-3">
+                <div class="row h-100">
+                    <div id="selection_2" class="col-sm-12 order-2 h-100">
+                        <div class="col-sm-12 h-50">
+                            Equipment selection
+                        </div>
+                        <div class="col-sm-12 h-50">
+                            Enemies Stats
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="form-wrapper-input-output" class="col-sm-5 row-cols-1 order-sm-2 order-3">
-                <div id="form-input-stats" class="col-sm-12 row-cols-sm-1 bg-body-tertiary pb-2">
+            <div id="form-wrapper-input-output" class="container col-sm-5 row-cols-1 order-sm-2 order-3 mb-sm-0 mb-3">
+                <div id="form-input-stats" class="col-sm-12 row-cols-sm-1">
                     <div class="col-sm-12 row justify-content-end">
                         <div class="col-3 text-center">
                             <p>Current</p>
@@ -126,7 +140,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="form-output-damages" class="col-sm-12 mt-4 bg-body-tertiary">
+                <div id="form-output-damages" class="col-sm-12 mt-4">
                     <div class="col-12 row justify-content-end pt-2">
                         
                         <div class="col-3 text-center">
@@ -197,7 +211,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3 order-sm-4 order-1">
+            <div id="form-wrapper-description" class="container col-sm-2 order-sm-4 order-1 mb-sm-0 mb-3">
                 How to use:
             </div>
         </div>
