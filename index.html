@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <title>HSR Calcyklator</title>
 </head>
 <body style="min-height: 100vh;">
     <div class="container mt-5">
@@ -14,17 +14,96 @@
             <div id="form-wrapper-selection-1" class="container col-sm-2 order-sm-1 order-2 mb-sm-0 mb-3">
                 <div class="row h-100">
                     <div id="selection_1" class="col-sm-12 order-1 h-100">
-                        <div class="col-sm-12 h-50 d-flex flex-column">
+                        <div class="col-sm-12 d-flex flex-column">
                             Character Selection
-                            <div id="carousel-characters" class="w-50 h-50">
-                                
+                            <div id="selection-characters">
+                                <select class="form-select form-select-sm">
+                                    <option value="Asta" selected>Asta</option>
+                                    <option value="Kafka">Kafka</option>
+                                </select>
                             </div>
-                            <div id="character-customization" class="w-50 h-50">
-
+                            <img class="img-fluid" src="rsc/seele.png" style="max-width:128px; height: auto;">
+                            <div id="character-customization" class="mt-1">
+                                <div id="form-skills">
+                                    <div class="d-flex justify-content-between">
+                                        <label class="col-form-label-sm" for="skills-1">Character level</label>
+                                        <input id="character-level" type="number" class="form-control-sm" min="1" max="80">
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <label class="col-form-label-sm" for="skills-1">Normal Attack</label>
+                                        <input id="skills-1" type="number" class="form-control-sm" min="1" max="15">
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <label class="col-form-label-sm" for="skills-1">Skill 1</label>
+                                        <input id="skills-1" type="number" class="form-control-sm" min="1" max="15">
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <label class="col-form-label-sm" for="skills-1">Skill 2</label>
+                                        <input id="skills-1" type="number" class="form-control-sm" min="1" max="15">
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <label class="col-form-label-sm" for="skills-1">Ultimate</label>
+                                        <input id="skills-1" type="number" class="form-control-sm" min="1" max="15">
+                                    </div>
+                                </div>
+                                <div id="form-traces-check" class="mt-1">
+                                    <div class="d-sm-block d-flex justify-content-between">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" value="traces1" id="cTraces1">
+                                            <label class="form-check-label" for="cTraces1">Trace 1</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" value="traces2" id="cTraces2">
+                                            <label class="form-check-label" for="cTraces2">Trace 2</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-sm-block d-flex justify-content-between">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" value="traces3" id="cTraces3">
+                                            <label class="form-check-label" for="cTraces3">Trace 3</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" value="traces4" id="cTraces4">
+                                            <label class="form-check-label" for="cTraces4">Trace 4</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-sm-block d-flex justify-content-between">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" value="traces6" id="cTraces6">
+                                            <label class="form-check-label" for="cTraces5">Trace 5</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" value="traces2" id="cTraces6">
+                                            <label class="form-check-label" for="cTraces6">Trace 6</label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 h-50">
-                            Cone selection
+                        <div class="col-sm-12 mt-3">
+                            Cone selection <!-- need to make this selection dynamics based on character path-->
+                            <div id="selection-cones">
+                                <select class="form-select form-select-sm">
+                                    <option value="Asta" selected>Fermata</option>
+                                    <option value="Kafka">Only Silence Remains</option>
+                                </select>
+                            </div>
+                            <img class="img-fluid" src="rsc/fermata.png" style="max-width:128px; height: auto;">
+                            <div id="cones-customizations" class="mt-1 pb-3" >
+                                <div class="d-flex justify-content-between">
+                                    <label class="col-form-label-sm" for="skills-1">Cone level</label>
+                                    <input id="cone-level" type="number" class="form-control-sm" min="1" max="80">
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <label class="col-form-label-sm" for="skills-1">Superimposition</label>
+                                    <input id="superimposition" type="number" class="form-control-sm" min="1" max="80">
+                                </div>
+                                <div class="form-check mt-1">
+                                    <input class="form-check-input" type="checkbox" value="traces6" id="cTraces6">
+                                    <label class="form-check-label" for="cTraces5">Allow incompatible cones</label>
+                                </div>
+                            </div>
+            
                         </div>
                     </div>
                 </div>
@@ -32,11 +111,16 @@
             <div id="form-wrapper-selection-2" class="container col-sm-2 order-sm-1 order-2 mb-sm-0 mb-3">
                 <div class="row h-100">
                     <div id="selection_2" class="col-sm-12 order-2 h-100">
-                        <div class="col-sm-12 h-50">
-                            Equipment selection
-                        </div>
-                        <div class="col-sm-12 h-50">
-                            Enemies Stats
+                        <a data-bs-target="#carousel_selection_2" data-bs-slide-to="0">Equipment</a> 
+                        <a data-bs-target="#carousel_selection_2" data-bs-slide-to="1">Enemies</a>
+                        <div id="carousel_selection_2" class="carousel slide carousel-fade">
+                            <div class="carousel-item active">
+                                <img src="rsc/seele.png" class="d-block w-100" alt="...">
+                                
+                              </div>
+                              <div class="carousel-item">
+                                
+                              </div>
                         </div>
                     </div>
                 </div>
