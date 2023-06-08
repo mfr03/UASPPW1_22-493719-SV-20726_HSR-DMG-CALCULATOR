@@ -11,6 +11,18 @@
     font-size:12px;
 }
 
+.modal-backdrop
+{
+    z-index: 0;
+    opacity: 0.2 !important;
+}
+
+.none
+{
+    display: none;
+}
+
+
 body
 {
     background-image: linear-gradient(to bottom right,#31394e,#1d212d,#191e33,#141829,#101321);

@@ -11,116 +11,668 @@
 <body style="min-height: 100vh;">
     <div class="container mt-5">
         <div class="row">
-            <div id="form-wrapper-selection-1" class="container col-sm-2 order-sm-1 order-2 mb-sm-0 mb-3">
+            <div id="form-wrapper-selection-1" class="container col-sm-3 order-sm-1 order-2 mb-sm-0 mb-3">
                 <div class="row h-100">
                     <div id="selection_1" class="col-sm-12 order-1 h-100">
                         <div class="col-sm-12 d-flex flex-column">
-                            Character Selection
-                            <div id="selection-characters">
-                                <select class="form-select form-select-sm">
-                                    <option value="Asta" selected>Asta</option>
-                                    <option value="Kafka">Kafka</option>
-                                </select>
+                            <div>
+                                <a class="" onclick="changeSelection('character')">Characters</a>
+                                <a class="d-sm-none d-inline" onclick="changeSelection('cone')">Light Cones</a>
                             </div>
-                            <img class="img-fluid" src="rsc/seele.png" style="max-width:128px; height: auto;">
-                            <div id="character-customization" class="mt-1">
-                                <div id="form-skills">
-                                    <div class="d-flex justify-content-between">
-                                        <label class="col-form-label-sm" for="skills-1">Character level</label>
-                                        <input id="character-level" type="number" class="form-control-sm" min="1" max="80">
+                            <div id="selection-characters" class="d-sm-block">
+                                <div id="selection-character" class="row mt-1">
+                                    <div class="col-7">
+                                        <p>Seele</p>
+                                        <select class="form-select-sm">
+                                            <option selected value="1">Level 1</option>
+                                            <option value="20">Level 20</option>
+                                            <option value="30">Level 30</option>
+                                            <option value="40">Level 40</option>
+                                        </select>
+                                        <select class="form-select-sm">
+                                            <option selected value="0">E0</option>
+                                            <option value="1">E1</option>
+                                            <option value="2">E2</option>
+                                            <option value="3">E3</option>
+                                            <option value="3">E4</option>
+                                            <option value="3">E5</option>
+                                            <option value="3">E6</option>
+                                        </select>
                                     </div>
-                                    <div class="d-flex justify-content-between">
-                                        <label class="col-form-label-sm" for="skills-1">Normal Attack</label>
-                                        <input id="skills-1" type="number" class="form-control-sm" min="1" max="15">
+                                    <div class="col-5">
+                                        <button type="button" class="btn p-0 mt-1" data-bs-toggle="modal" data-bs-target="#charactersModal">
+                                            <img id="selected-image" class="img-fluid" src="rsc/characters/seele.png" width="96px">
+                                        </button>
                                     </div>
-                                    <div class="d-flex justify-content-between">
-                                        <label class="col-form-label-sm" for="skills-1">Skill 1</label>
-                                        <input id="skills-1" type="number" class="form-control-sm" min="1" max="15">
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <label class="col-form-label-sm" for="skills-1">Skill 2</label>
-                                        <input id="skills-1" type="number" class="form-control-sm" min="1" max="15">
-                                    </div>
-                                    <div class="d-flex justify-content-between">
-                                        <label class="col-form-label-sm" for="skills-1">Ultimate</label>
-                                        <input id="skills-1" type="number" class="form-control-sm" min="1" max="15">
+                                    <div class="modal fade" id="charactersModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <p class="modal-title fw-bold">Character Selections</p>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('arlan')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/arlan.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('asta')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/asta.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('bailu')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/bailu.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('bronya')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/bronya.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('clara')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/clara.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('danheng')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/danheng.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('gepard')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/gepard.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('herta')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/herta.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('himeko')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/himeko.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('hook')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/hook.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('jingyuan')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/jingyuan.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('kafka')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/kafka.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('luocha')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/luocha.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('mitsuki')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/mitsuki.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('natasha')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/natasha.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('pela')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/pela.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('playerboy1')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/playerboy1.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('playerboy2')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/playerboy2.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('playergirl1')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/playergirl1.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('playergirl2')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/playergirl2.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('qingque')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/qingque.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('sampo')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/sampo.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('seele')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/seele.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('serval')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/serval.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('silverwolf')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/silverwolf.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('sushang')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/sushang.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('tingyun')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/tingyun.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('welt')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/welt.png" width="64px">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('yanqing')">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/yanqing.png" width="64px">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div id="form-traces-check" class="mt-1">
-                                    <div class="d-sm-block d-flex justify-content-between">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" value="traces1" id="cTraces1">
-                                            <label class="form-check-label" for="cTraces1">Trace 1</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" value="traces2" id="cTraces2">
-                                            <label class="form-check-label" for="cTraces2">Trace 2</label>
-                                        </div>
+                                <div id="selection-character-skills" class="row mt-2">
+                                    <div class="col-4">
+                                        <select class="form-select-sm">
+                                            <option selected value="1">N. Attack</option>
+                                            <option value="20">Level 20</option>
+                                            <option value="30">Level 30</option>
+                                            <option value="40">Level 40</option>
+                                        </select>
                                     </div>
-                                    <div class="d-sm-block d-flex justify-content-between">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" value="traces3" id="cTraces3">
-                                            <label class="form-check-label" for="cTraces3">Trace 3</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" value="traces4" id="cTraces4">
-                                            <label class="form-check-label" for="cTraces4">Trace 4</label>
-                                        </div>
+                                    <div class="col-4">
+                                        <select class="form-select-sm">
+                                            <option selected value="1">Skill 1</option>
+                                            <option value="20">Level 20</option>
+                                            <option value="30">Level 30</option>
+                                            <option value="40">Level 40</option>
+                                        </select>
                                     </div>
-                                    <div class="d-sm-block d-flex justify-content-between">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" value="traces6" id="cTraces6">
-                                            <label class="form-check-label" for="cTraces5">Trace 5</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" value="traces2" id="cTraces6">
-                                            <label class="form-check-label" for="cTraces6">Trace 6</label>
-                                        </div>
-                                    </div>
+                                    <di class="col-4">
+                                        <select class="form-select-sm">
+                                            <option selected value="1">Skill 2</option>
+                                            <option value="20">Level 20</option>
+                                            <option value="30">Level 30</option>
+                                            <option value="40">Level 40</option>
+                                        </select>
+                                    </di>
+                                </div>
+                                <div id="se;ection-character-unique-buff" class="row mt-2">
+                                    <p>Unique Buffs:</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 mt-3">
+                        <div id="selection-cones" class="col-sm-12 d-none d-sm-block">
                             Cone selection <!-- need to make this selection dynamics based on character path-->
-                            <div id="selection-cones">
-                                <select class="form-select form-select-sm">
-                                    <option value="Asta" selected>Fermata</option>
-                                    <option value="Kafka">Only Silence Remains</option>
-                                </select>
+                            <div class="row">
+                                <div class="col-7 mt-1">
+                                    <div class="d-flex justify-content-between">
+                                        <label class="col-form-label-sm" for="skills-1">Cone level</label>
+                                        <input id="cone-level" type="number" class="form-control-sm" min="1" max="80">
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <label class="col-form-label-sm" for="skills-1">Superimposition</label>
+                                        <input id="superimposition" type="number" class="form-control-sm" min="1" max="80">
+                                    </div>
+                                    <div class="form-check mt-1">
+                                        <input class="form-check-input" type="checkbox" value="traces6" id="cTraces6">
+                                        <label class="form-check-label" for="cTraces5">Allow incompatible cones</label>
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <button type="button" class="btn p-0 mt-1" data-bs-toggle="modal" data-bs-target="#conesModal">
+                                        <img id="selected-cone" class="img-fluid" src="rsc/light-cones/21022.png" style="width:120px;">
+                                    </button>
+
+                                </div>
+                                <div class="modal fade" id="conesModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <p class="modal-title fw-bold">Cone Selections</p>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20001')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20001.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20002')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20002.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20003')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20003.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20004')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20004.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20005')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20005.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20006')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20006.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20007')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20007.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20008')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20008.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20009')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20009.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20010')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20010.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20011')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20011.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20012')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20012.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20013')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20013.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20014')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20014.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20015')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20015.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20016')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20016.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20017')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20017.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20018')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20018.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20019')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20019.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20020')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20020.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21000')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21000.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21001')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21001.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21002')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21002.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21003')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21003.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21004')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21004.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21005')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21005.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21006')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21006.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21007')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21007.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21008')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21008.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21009')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21009.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21010')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21010.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21011')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21011.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21012')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21012.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21013')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21013.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21014')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21014.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21015')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21015.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21016')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21016.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21017')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21017.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21018')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21018.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21019')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21019.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21020')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21020.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21021')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21021.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21022')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21022.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21023')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21023.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21024')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21024.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21025')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21025.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21026')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21026.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21027')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21027.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21028')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21028.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21029')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21029.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21030')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21030.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21031')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21031.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21032')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21032.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21033')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21033.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21034')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21034.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23000')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23000.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23001')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23001.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23002')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23002.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23003')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23003.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23004')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23004.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23005')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23005.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23010')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23010.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23012')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23012.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('24000')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/24000.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('24001')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/24001.png" width="64px">
+                                                </button>
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('24002')">
+                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/24002.png" width="64px">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <img class="img-fluid" src="rsc/fermata.png" style="max-width:128px; height: auto;">
-                            <div id="cones-customizations" class="mt-1 pb-3" >
-                                <div class="d-flex justify-content-between">
-                                    <label class="col-form-label-sm" for="skills-1">Cone level</label>
-                                    <input id="cone-level" type="number" class="form-control-sm" min="1" max="80">
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <label class="col-form-label-sm" for="skills-1">Superimposition</label>
-                                    <input id="superimposition" type="number" class="form-control-sm" min="1" max="80">
-                                </div>
-                                <div class="form-check mt-1">
-                                    <input class="form-check-input" type="checkbox" value="traces6" id="cTraces6">
-                                    <label class="form-check-label" for="cTraces5">Allow incompatible cones</label>
-                                </div>
-                            </div>
-            
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="form-wrapper-selection-2" class="container col-sm-2 order-sm-1 order-2 mb-sm-0 mb-3">
+            <div id="form-wrapper-selection-2" class="container col-sm-3 order-sm-1 order-2 mb-sm-0 mb-3">
                 <div class="row h-100">
                     <div id="selection_2" class="col-sm-12 order-2 h-100">
-                        <a data-bs-target="#carousel_selection_2" data-bs-slide-to="0">Equipment</a> 
-                        <a data-bs-target="#carousel_selection_2" data-bs-slide-to="1">Enemies</a>
-                        <div id="carousel_selection_2" class="carousel slide carousel-fade">
+                        <div class="d-flex flex-row justify-content-between">
+                            <a data-bs-target="#carousel_selection_2" data-bs-slide-to="0">Equipment</a> 
+                            <a data-bs-target="#carousel_selection_2" data-bs-slide-to="1">Enemies</a>
+                        </div>
+                        <div id="carousel_selection_2" class="carousel slide">
                             <div class="carousel-item active">
-                                <img src="rsc/seele.png" class="d-block w-100" alt="...">
-                                
+                                <div id="modal-buttons" class="row">
+                                    <div class="d-flex flex-row justify-content-between">
+                                        <button type="button" class="btn p-0 mt-1" data-bs-toggle="modal" data-bs-target="#relicModalHead">
+                                            <img  id="relic_head" class="img-fluid" src="rsc/relics_png/geniuss_head.png" width="92px">
+                                        </button>
+                                        <button type="button" class="btn p-0 mt-1" data-bs-toggle="modal" data-bs-target="#relicModalHands">
+                                            <img id="relic_hands" class="img-fluid" src="rsc/relics_png/geniuss_hands.png" width="92px">
+                                        </button>
+                                        <button type="button" class="btn p-0 mt-1" data-bs-toggle="modal" data-bs-target="#relicModalSphere">
+                                            <img id="relic_sphere" class="img-fluid" src="rsc/relics_png/hertas_sphere.png" width="92px">
+                                        </button>
+                                    </div>
+                                    <div class="d-flex flex-row justify-content-between">
+                                        <button type="button" class="btn p-0 mt-1" data-bs-toggle="modal" data-bs-target="#relicModalBody">
+                                            <img id="relic_body" class="img-fluid" src="rsc/relics_png/geniuss_body.png" width="92px">
+                                        </button>
+                                        <button type="button" class="btn p-0 mt-1" data-bs-toggle="modal" data-bs-target="#relicModalFeet">
+                                            <img id="relic_feet" class="img-fluid" src="rsc/relics_png/geniuss_feet.png" width="92px">
+                                        </button>
+                                        <button type="button" class="btn p-0 mt-1" data-bs-toggle="modal" data-bs-target="#relicModalRope">
+                                            <img id="relic_rope" class="img-fluid" src="rsc/relics_png/hertas_rope.png" width="92px">
+                                        </button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="modal fade" id="relicModalHead" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchHead">
+                                                        <label class="form-check-label fw-bold" for="chooseSetSwitchHead">Select Relic Set</label>
+                                                    </div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn" data-bs-dismiss="modal">
+                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/bands_head.png" width="64px" onclick="changeRelic('bands', 'head')">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/champions_head.png" width="64px" onclick="changeRelic('champions', 'head')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/eagles_head.png" width="64px" onclick="changeRelic('eagles', 'head')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/firesmiths_head.png" width="64px" onclick="changeRelic('firesmiths', 'head')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/geniuss_head.png" width="64px" onclick="changeRelic('geniuss', 'head')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/guards_head.png" width="64px" onclick="changeRelic('guards', 'head')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/hunters_head.png" width="64px" onclick="changeRelic('hunters', 'head')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/knights_head.png" width="64px" onclick="changeRelic('knights', 'head')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/musketeers_head.png" width="64px" onclick="changeRelic('musketeers', 'head')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/passerbys_head.png" width="64px" onclick="changeRelic('passerbys', 'head')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/thiefs_head.png" width="64px" onclick="changeRelic('thiefs', 'head')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/wastelanders_head.png" width="64px" onclick="changeRelic('wastelanders', 'head')"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="relicModalBody" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchBody">
+                                                        <label class="form-check-label fw-bold" for="chooseSetSwitchBody">Select Relic Set</label>
+                                                    </div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn" data-bs-dismiss="modal">
+                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/bands_body.png" width="64px" onclick="changeRelic('bands', 'body')">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/champions_body.png" width="64px" onclick="changeRelic('champions', 'body')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/eagles_body.png" width="64px" onclick="changeRelic('eagles', 'body')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/firesmiths_body.png" width="64px" onclick="changeRelic('firesmiths', 'body')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/geniuss_body.png" width="64px" onclick="changeRelic('geniuss', 'body')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/guards_body.png" width="64px" onclick="changeRelic('guards', 'body')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/hunters_body.png" width="64px" onclick="changeRelic('hunters', 'body')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/knights_body.png" width="64px" onclick="changeRelic('knights', 'body')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/musketeers_body.png" width="64px" onclick="changeRelic('musketeers', 'body')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/passerbys_body.png" width="64px" onclick="changeRelic('passerbys', 'body')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/thiefs_body.png" width="64px" onclick="changeRelic('thiefs', 'body')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/wastelanders_body.png" width="64px" onclick="changeRelic('wastelanders', 'body')"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="relicModalHands" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchHands">
+                                                        <label class="form-check-label fw-bold" for="chooseSetSwitchHands">Select Relic Set</label>
+                                                    </div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn" data-bs-dismiss="modal">
+                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/bands_hands.png" width="64px" onclick="changeRelic('bands', 'hands')">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/champions_hands.png" width="64px" onclick="changeRelic('champions', 'hands')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/eagles_hands.png" width="64px" onclick="changeRelic('eagles', 'hands')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/firesmiths_hands.png" width="64px" onclick="changeRelic('firesmiths', 'hands')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/geniuss_hands.png" width="64px" onclick="changeRelic('geniuss', 'hands')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/guards_hands.png" width="64px" onclick="changeRelic('guards', 'hands')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/hunters_hands.png" width="64px" onclick="changeRelic('hunters', 'hands')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/knights_hands.png" width="64px" onclick="changeRelic('knights', 'hands')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/musketeers_hands.png" width="64px" onclick="changeRelic('musketeers', 'hands')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/passerbys_hands.png" width="64px" onclick="changeRelic('passerbys', 'hands')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/thiefs_hands.png" width="64px" onclick="changeRelic('thiefs', 'hands')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/wastelanders_hands.png" width="64px" onclick="changeRelic('wastelanders', 'hands')"></button>                                         
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="relicModalFeet" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchFeet">
+                                                        <label class="form-check-label fw-bold" for="chooseSetSwitchHands">Select Relic Set</label>
+                                                    </div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn" data-bs-dismiss="modal">
+                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/bands_feet.png" width="64px" onclick="changeRelic('bands', 'feet')">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/champions_feet.png" width="64px" onclick="changeRelic('champions', 'feet')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/eagles_feet.png" width="64px" onclick="changeRelic('eagles', 'feet')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/firesmiths_feet.png" width="64px" onclick="changeRelic('firesmiths', 'feet')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/geniuss_feet.png" width="64px" onclick="changeRelic('geniuss', 'feet')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/guards_feet.png" width="64px" onclick="changeRelic('guards', 'feet')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/hunters_feet.png" width="64px" onclick="changeRelic('hunters', 'feet')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/knights_feet.png" width="64px" onclick="changeRelic('knights', 'feet')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/musketeers_feet.png" width="64px" onclick="changeRelic('musketeers', 'feet')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/passerbys_feet.png" width="64px" onclick="changeRelic('passerbys', 'feet')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/thiefs_feet.png" width="64px" onclick="changeRelic('thiefs', 'feet')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/wastelanders_feet.png" width="64px" onclick="changeRelic('wastelanders', 'feet')"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="relicModalSphere" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchSphere">
+                                                        <label class="form-check-label fw-bold" for="chooseSetSwitchSphere">Select Relic Set</label>
+                                                    </div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn" data-bs-dismiss="modal">
+                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/hertas_sphere.png" width="64px" onclick="changeRelic('hertas', 'sphere')">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal">
+                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/belobogs_sphere.png" width="64px" onclick="changeRelic('belobogs', 'sphere')">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/ipcs_sphere.png" width="64px" onclick="changeRelic('ipcs', 'sphere')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/planet_sphere.png" width="64px" onclick="changeRelic('planet', 'sphere')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/salsottos_sphere.png" width="64px" onclick="changeRelic('salsottos', 'sphere')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/talias_sphere.png" width="64px" onclick="changeRelic('talias', 'sphere')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/vonwacqs_sphere.png" width="64px" onclick="changeRelic('vonwacqs', 'sphere')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/xianzhou_sphere.png" width="64px" onclick="changeRelic('xianzhou', 'sphere')"></button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="relicModalRope" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchRope">
+                                                        <label class="form-check-label fw-bold" for="chooseSetSwitchRope">Select Relic Set</label>
+                                                    </div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <button type="button" class="btn" data-bs-dismiss="modal">
+                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/hertas_rope.png" width="64px" onclick="changeRelic('hertas', 'rope')">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal">
+                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/belobogs_rope.png" width="64px" onclick="changeRelic('belobogs', 'rope')">
+                                                    </button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/ipcs_rope.png" width="64px" onclick="changeRelic('ipcs', 'rope')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/planet_rope.png" width="64px" onclick="changeRelic('planet', 'rope')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/salsottos_rope.png" width="64px" onclick="changeRelic('salsottos', 'rope')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/talias_rope.png" width="64px" onclick="changeRelic('talias', 'rope')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/vonwacqs_rope.png" width="64px" onclick="changeRelic('vonwacqs', 'rope')"></button>
+                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/xianzhou_rope.png" width="64px" onclick="changeRelic('xianzhou', 'rope')"></button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="set_bonuses">
+                                    <h4>set bonus 2</h4>
+                                    <h4>set bonus 2</h4>
+                                    <h4>set bonus 2</h4>
+                                </div>
                               </div>
-                              <div class="carousel-item">
-                                
-                              </div>
+                            <div class="carousel-item">
+                                Afflicted Debuff
+                                <div class="d-sm-block d-flex justify-content-between mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="bleed" id="enemy_debuff_bleed">
+                                        <label class="form-check-label" for="enemy_debuff_bleed">bleed</label>
+                                    </div>
+                                </div>
+                                <div class="d-sm-block d-flex justify-content-between mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="burn" id="enemy_debuff_burn">
+                                        <label class="form-check-label" for="enemy_debuff_burn">burn</label>
+                                    </div>
+                                </div>
+                                <div class="d-sm-block d-flex justify-content-between mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="frozen" id="enemy_debuff_frozen">
+                                        <label class="form-check-label" for="enemy_debuff_frozen">frozen</label>
+                                    </div>
+                                </div>
+                                <div class="d-sm-block d-flex justify-content-between mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="shock" id="enemy_debuff_shock">
+                                        <label class="form-check-label" for="enemy_debuff_shock">shock</label>
+                                    </div>
+                                </div>
+                                <div class="d-sm-block d-flex justify-content-between mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="wind_shear" id="enemy_debuff_wind_shear">
+                                        <label class="form-check-label" for="enemy_debuff_wind_shear">Wind Shear</label>
+                                    </div>
+                                </div>
+                                <div class="d-sm-block d-flex justify-content-between mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="entanglement" id="enemy_debuff_entanglement">
+                                        <label class="form-check-label" for="enemy_debuff_entanglement">entanglement</label>
+                                    </div>
+                                </div>
+                                <div class="d-sm-block d-flex justify-content-between mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" value="imprisonment" id="enemy_debuff_imprisonment">
+                                        <label class="form-check-label" for="enemy_debuff_imprisonment">imprisonment</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -295,11 +847,9 @@
                     </div>
                 </div>
             </div>
-            <div id="form-wrapper-description" class="container col-sm-2 order-sm-4 order-1 mb-sm-0 mb-3">
-                How to use:
-            </div>
         </div>
     </div>
 </body>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="charactersAndLightCones.js"></script>
 </html>
