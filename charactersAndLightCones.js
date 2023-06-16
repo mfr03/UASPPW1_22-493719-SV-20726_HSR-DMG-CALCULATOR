@@ -8,7 +8,6 @@ var currentHands = 'geniuss';
 var currentSphere = 'herta';
 var currentRope = 'herta';
 
-
 function setValues(characterName)
 {
 
@@ -192,9 +191,10 @@ function changeCone(coneName)
 
 
 function changeCharacter(characterName)
-{
+{   
     var selectedImage = document.getElementById("selected-image");
     selectedImage.src = "rsc/characters/" + characterName + ".png";
+    document.getElementById("placeholderForCharacter").value = characterName;
     setValues(characterName);
 }
 

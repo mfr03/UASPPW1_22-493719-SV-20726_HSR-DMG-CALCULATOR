@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>HSR Calcyklator</title>
 </head>
-<body style="min-height: 100vh;">
+<?php include 'connection.php' ?>
+<body style="min-height: 100vh;" onload="mainFormula('Ultimate'); mainFormula('BasicATK'); mainFormula('Skill')">
     <div class="container mt-5">
         <div class="row">
             <div id="form-wrapper-selection-1" class="container col-sm-3 order-sm-1 order-2 mb-sm-0 mb-3">
@@ -24,7 +26,7 @@
                                     <div class="col-7">
                                         <p>Seele</p>
                                         <label class="col-form-label-sm" for="chara-level">Character Level</label>
-                                        <input id="chara-level" type="number" class="form-control-sm" min="1" max="80" oninput="">
+                                        <input id="chara-level" type="text" class="form-control-sm" value="80">
                                         <select class="form-select-sm">
                                             <option selected value="0">E0</option>
                                             <option value="1">E1</option>
@@ -52,93 +54,94 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('arlan')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('arlan')" value="arlan">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/arlan.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('asta')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('asta')" value="asta">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/asta.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('bailu')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('bailu')" value="bailu">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/bailu.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('bronya')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('bronya')" value="bronya">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/bronya.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('clara')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('clara')" value="clara">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/clara.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('danheng')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('danheng')" value="danheng">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/danheng.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('gepard')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('gepard')" value="gepard">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/gepard.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('herta')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('herta')" value="herta">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/herta.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('himeko')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('himeko')" value="himeko">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/himeko.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('hook')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('hook')" value="hook">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/hook.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('jingyuan')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('jingyuan')" value="jingyuan">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/jingyuan.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('kafka')">
+                                                    <button type="dbutton" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('kafka')" value="kafka">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/kafka.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('luocha')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('luocha')" value="luocha">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/luocha.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('mitsuki')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('mitsuki')" value="mar7th">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/mitsuki.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('natasha')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('natasha')" value="natasha">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/natasha.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('pela')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('pela')" value="pela">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/pela.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('playerboy1')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('playerboy1')" value="playerboy">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/playerboy1.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('playerboy2')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('playerboy2')" value="playerboy2">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/playerboy2.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('playergirl1')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('playergirl1')" value="playergirl">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/playergirl1.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('playergirl2')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('playergirl2')" value="playergirl2">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/playergirl2.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('qingque')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('qingque')" value="qingque">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/qingque.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('sampo')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('sampo')" value="sampo">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/sampo.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('seele')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('seele')" value="seele">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/seele.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('serval')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('serval')" value="serval">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/serval.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('silverwolf')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('silverwolf')" value="silverwwolf">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/silverwolf.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('sushang')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('sushang')" value="sushang">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/sushang.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('tingyun')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('tingyun')" value="tingyuan">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/tingyun.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('welt')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('welt')" value="welt">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/welt.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCharacter('yanqing')">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('yanqing')" value="yangqing">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/yanqing.png" width="64px">
                                                     </button>
+                                                    <button class="none" id="placeholderForCharacter"></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -146,31 +149,61 @@
                                 </div>
                                 <div id="selection-character-skills" class="row mt-2">
                                     <div class="col-4">
-                                        <select class="form-select-sm">
-                                            <option selected value="1">N. Attack</option>
-                                            <option value="20">Level 20</option>
-                                            <option value="30">Level 30</option>
-                                            <option value="40">Level 40</option>
+                                        <select id="BasicATK-level" class="form-select-sm">
+                                            <option value="0">N. Attack</option>
+                                            <option value="1">Level 1</option>
+                                            <option selected value="2">Level 2</option>
+                                            <option  value="3">Level 3</option>
+                                            <option value="4">Level 4</option>
+                                            <option value="5">Level 5</option>
+                                            <option value="6">Level 6</option>
+                                            <option value="7">Level 7</option>
+                                            <option value="8">Level 8</option>
+                                            <option value="9">Level 9</option>
                                         </select>
                                     </div>
                                     <div class="col-4">
-                                        <select class="form-select-sm">
-                                            <option selected value="1">Skill 1</option>
-                                            <option value="20">Level 20</option>
-                                            <option value="30">Level 30</option>
-                                            <option value="40">Level 40</option>
+                                        <select id="Skill-level"class="form-select-sm">
+                                            <option selected value="0">Skill 1</option>
+                                            <option value="1">Level 1</option>
+                                            <option value="2">Level 2</option>
+                                            <option value="3">Level 3</option>
+                                            <option value="4">Level 4</option>
+                                            <option selected value="5">Level 5</option>
+                                            <option value="6">Level 6</option>
+                                            <option value="7">Level 7</option>
+                                            <option value="8">Level 8</option>
+                                            <option value="9">Level 9</option>
+                                            <option value="10">Level 10</option>
+                                            <option value="11">Level 11</option>
+                                            <option value="12">Level 12</option>
+                                            <option value="13">Level 13</option>
+                                            <option value="14">Level 14</option>
+                                            <option value="15">Level 15</option>
                                         </select>
                                     </div>
-                                    <di class="col-4">
-                                        <select class="form-select-sm">
-                                            <option selected value="1">Skill 2</option>
-                                            <option value="20">Level 20</option>
-                                            <option value="30">Level 30</option>
-                                            <option value="40">Level 40</option>
+                                    <div class="col-4">
+                                        <select id="Ultimate-level" class="form-select-sm">
+                                            <option selected value="0">Ult</option>
+                                            <option value="1">Level 1</option>
+                                            <option value="2">Level 2</option>
+                                            <option value="3">Level 3</option>
+                                            <option value="4">Level 4</option>
+                                            <option value="5">Level 5</option>
+                                            <option value="6">Level 6</option>
+                                            <option value="7">Level 7</option>
+                                            <option selected value="8">Level 8</option>
+                                            <option value="9">Level 9</option>
+                                            <option value="10">Level 10</option>
+                                            <option value="11">Level 11</option>
+                                            <option value="12">Level 12</option>
+                                            <option value="13">Level 13</option>
+                                            <option value="14">Level 14</option>
+                                            <option value="15">Level 15</option>
                                         </select>
-                                    </di>
+                                    </div>
                                 </div>
-                                <div id="se;ection-character-unique-buff" class="row mt-2">
+                                <div id="selection-character-unique-buff" class="row mt-2">
                                     <p>Unique Buffs:</p>
                                 </div>
                             </div>
@@ -626,7 +659,26 @@
                                 </div>
                               </div>
                             <div class="carousel-item">
+                            <div class="d-sm-block d-flex justify-content-between mt-2">
+                                <!-- need to make this two radio button -->
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="enemy_weak_to_element">
+                                        <label class="form-check-label" for="enemy_weak_to_element">weak to current element</label>
+                                    </div>
+                                </div>
+                                <div class="d-sm-block d-flex justify-content-between mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox"id="enemy_resist_to_element">
+                                        <label class="form-check-label" for="enemy_resist_to_element">resist to current element</label>
+                                    </div>
+                                </div>
                                 Afflicted Debuff
+                                <div class="d-sm-block d-flex justify-content-between mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="enemy_toughness_broken">
+                                        <label class="form-check-label" for="enemy_toughness_broken">toughness broken</label>
+                                    </div>
+                                </div>
                                 <div class="d-sm-block d-flex justify-content-between mt-2">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="bleed" id="enemy_debuff_bleed">
@@ -669,6 +721,12 @@
                                         <label class="form-check-label" for="enemy_debuff_imprisonment">imprisonment</label>
                                     </div>
                                 </div>
+                                <div class="d-md-block d-flex justify-content-between mt-2">
+                                    <div class="form-check form-check-inline">
+                                        <input id="enemy-level" class="h-25 w-25 form-check-input" type="text" value="69">
+                                        <label class="form-check-label" for="enemy-level">Enemy Level</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -678,54 +736,32 @@
                 <div id="form-input-stats" class="col-sm-12 row-cols-sm-1">
                     <div class="col-sm-12 row justify-content-end">
                         <div class="col-3 text-center">
-                            <p>Current</p>
+                            <p>Base</p>
                         </div>
                         <div class="col-3 text-center">
-                            <p>New</p>
+                            <p>Flat</p>
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
                         <div class="col-6 text-end">
-                            <p>Base Attack</p>
+                            <p>Attack</p>
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
+                        <input id="base-attack" type="num" class="container btn btn-dark" value="1049">
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
+                        <input id="flat-attack" type="num" class="container btn btn-dark" value="1378">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
                         <div class="col-6 text-end">
-                            <p>Flat Attack</p>
+                            <p>Defense</p>
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
+                        <input id="base-defense" type="num" class="container btn btn-dark" value="648">
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 row justify-content-end mb-3">
-                        <div class="col-6 text-end">
-                            <p>Base Defense</p>
-                        </div>
-                        <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
-                        </div>
-                        <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 row justify-content-end mb-3">
-                        <div class="col-6 text-end">
-                            <p>Flat Defense</p>
-                        </div>
-                        <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
-                        </div>
-                        <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
+                        <input id="flat-defense" type="num" class="container btn btn-dark" value="71">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
@@ -733,10 +769,10 @@
                             <p>Crit Rate %</p>
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
+                        <input id="base-crit-rate" type="num" class="container btn btn-dark" value="5">
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
+                        <input id="flat-crit-rate" type="num" class="container btn btn-dark" value="61.5">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
@@ -744,10 +780,10 @@
                             <p>Crit Damage</p>
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
+                        <input id="base-crit-dmg" type="num" class="container btn btn-dark" value="50">
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
+                        <input id="flat-crit-dmg" type="num" class="container btn btn-dark" value="67,5">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
@@ -755,10 +791,10 @@
                             <p>Break Effect %</p>
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
+                        <input id="base-break-effect" type="num" class="container btn btn-dark" value="0">
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
+                        <input id="flat-break-effect" type="num" class="container btn btn-dark" value="11">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
@@ -766,10 +802,21 @@
                             <p>Elemental Damage Boost</p>
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
+                            <input id="base-elemental-boost" type="num" class="container btn btn-dark" value="0">
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <button class="container btn btn-dark">aaa</button>
+                            <input id="flat-elemental-boost" type="num" class="container btn btn-dark" value="48,8">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 row justify-content-end mb-3">
+                        <div class="col-6 text-end">
+                            <p>Elemental Penetration %</p>
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <input id="base-elemental-pen" type="num" class="container btn btn-dark" value="0">
+                        </div>
+                        <div class="col-3 d-flex justify-content-end">
+                            <input id="flat-elemental-pen" type="num" class="container btn btn-dark" value="0">
                         </div>
                     </div>
                 </div>
@@ -777,69 +824,44 @@
                     <div class="col-12 row justify-content-end pt-2">
                         
                         <div class="col-3 text-center">
-                            <p>Current</p>
+                            <p>Normal</p>
                         </div>
                         <div class="col-3 text-center">
-                            <p>New</p>
+                            <p>Crit</p>
                         </div>
-                        <div class="col-3 text-center">
-                            <p>Change</p>
                         </div>
                     </div>
                     <div class="col-12 row justify-content-end mb-3">
                         <div class="col-3 text-end">
                             Normal Attack
                         </div>
-                        <div class="col-3 text-center">
-                            <p class="text-bg-dark rounded-">Current</p>
+                        <div class="col-4 d-flex justify-content-end">
+                            <input id="BasicATK-res" type="num" class="container btn btn-dark">
                         </div>
-                        <div class="col-3 text-center">
-                            <p>New</p>
-                        </div>
-                        <div class="col-3 text-center">
-                            <p>Change</p>
+                        <div class="col-4 d-flex justify-content-end">
+                            <input id="BasicATK-res-crit" type="num" class="container btn btn-dark">
                         </div>
                     </div>
                     <div class="col-12 row justify-content-end mb-3">
                         <div class="col-3 text-end">
                             Skill 1
                         </div>
-                        <div class="col-3 text-center">
-                            <p class="text-bg-dark rounded-">Current</p>
+                        <div class="col-4 d-flex justify-content-end">
+                            <input id="Skill-res" type="num" class="container btn btn-dark">
                         </div>
-                        <div class="col-3 text-center">
-                            <p>New</p>
-                        </div>
-                        <div class="col-3 text-center">
-                            <p>Change</p>
-                        </div>
-                    </div>
-                    <div class="col-12 row justify-content-end mb-3">
-                        <div class="col-3 text-end">
-                            Skill 2
-                        </div>
-                        <div class="col-3 text-center">
-                            <p class="text-bg-dark rounded-">Current</p>
-                        </div>
-                        <div class="col-3 text-center">
-                            <p>New</p>
-                        </div>
-                        <div class="col-3 text-center">
-                            <p>Change</p>
+                        <div class="col-4 d-flex justify-content-end">
+                            <input id="Skill-res-crit" type="num" class="container btn btn-dark">
                         </div>
                     </div>
                     <div class="col-12 row justify-content-end mb-3">
                         <div class="col-3 text-end">
                             Ultimate
                         </div>
-                        <div class="col-3 text-center">
-                            <p class="text-bg-dark rounded-">Current</p>
+                        <div class="col-4 d-flex justify-content-end">
+                            <input id="Ultimate-res" type="num" class="container btn btn-dark">
                         </div>
-                        <div class="col-3 text-center">
-                            <p>New</p>
-                        </div>
-                        <div class="col-3 text-center">
-                            <p>Change</p>
+                        <div class="col-4 d-flex justify-content-end">
+                            <input id="Ultimate-res-crit" type="num" class="container btn btn-dark">
                         </div>
                     </div>
                 </div>
@@ -888,4 +910,6 @@
     <script src="js/bootstrap.bundle.js"></script>
     <script src="charactersAndLightCones.js"></script>
     <script src="characterTraces.js"></script>
+    <script src="characterToDB.js"></script>
+    <script src="calculateDamage.js"></script>
 </html>
