@@ -1,11 +1,10 @@
 import json
 import pandas as pd
-f = open('characters/seele.json')
+import utils
+import re
 
-data = json.load(f)
 
-
-def dataForAscension():
+def dataForAscension(data):
     data_for_each_ascension = dict()
 
     for num, data in enumerate(data['levelData']):
@@ -27,7 +26,7 @@ def dataForAscension():
         print(data_for_each_ascension[promotion])
 
 
-def dataForTraces():
+def dataForTraces(data):
     minorTraces = list()
     majorTraces = list()
     for i in range(len(data['skillTreePoints'])):
@@ -51,8 +50,8 @@ def dataForTraces():
     return majorTraces, minorTraces
 
 
-def tracesToHTML():
-    major, minor = dataForTraces()
+def tracesToHTML(major, minor):
+    major, minor = major, minor
     possibleKeyForMinorList = [
         'Physical',
         'Fire',
@@ -62,9 +61,12 @@ def tracesToHTML():
         'Quantum',
         'Imaginary',
         'CRIT DMG',
-        'CRIT RATE',
+        'CRIT Rate',
         'Effect RES',
         'Effect Hit Rate',
+        'Outgoing Healing',
+        'Energy Regeneration',
+        'Break Effect',
         'HP',
         'ATK',
         'DEF',
@@ -78,20 +80,91 @@ def tracesToHTML():
                 minortrace = possible
                 break;
 
-        txt = '<button type="button" class="btn" onclick="addMinorTraces(' + f"'{minortrace}'" + ', ' + str(mTrace['statusList'][0]['value']) + ')">' + '<p>' + mTrace['name'] + ' ' + str(mTrace['statusList'][0]['value']*100) + '%' + '<p></button>'
-        # print(txt)
+        txt = '<button type="button" class="btn" onclick="addMinorTraces(' + f"'{minortrace}'" + ', ' + str(mTrace['statusList'][0]['value']) + ')">' + '<p>' + mTrace['name'] + ' ' + str(round(mTrace['statusList'][0]['value']*100)) + '%' + '</p></button>'
+        txt = txt.replace("'", '"')
+        minorList.append(txt)
 
     for majTrace in major:
         majortrace = ''
-        txt = '<button type="button" class="btn" onclick="addMajorTraces(' + f"'{majTrace['name']}'" + ')">' + '<p>' + majTrace['name'] + ' ' + majTrace['descHash'] + '<p></button>'
-        print(txt)
+        desc = majTrace['descHash']
+        desc = re.sub(r"<nobr>", "", desc)
+        desc = re.sub(r"</nobr>", "", desc)
+        params = majTrace['levelData'][0]['params']
+        for enum, param in enumerate(params, 1):
+
+            if param % 1 == param and param < 1:
+                param = round(param * 100)
+            desc = re.sub(r"#1\[i\]", f'{param}', desc)
+            if enum == 2:
+                desc = re.sub(r"#2\[i\]", f'{param}', desc)
+
+        txt = '<button type="button" class="btn" onclick="addMajorTraces(' + f"'{majTrace['name']}'" + ')">' + '<p>' + majTrace['name'] + '</p><p> ' + desc + '</p></button>'
+        txt = txt.replace("'", '"')
+        majorList.append(txt)
+    return majorList, minorList
 
 
+def tracesForDB():
+    arr = utils.fileList('characters/')
+    nameList = [x.replace('.json', '') for x in arr]
+    for enum, chara in enumerate(arr):
+        major, minor = tracesToHTML(*dataForTraces(utils.openJson('characters/' + chara)))
+        baseQuery = "INSERT INTO `character_traces` (`traces_id`, `major_traces`, `minor_traces`) VALUES ("
+        baseQuery += "'" + nameList[enum] + '_traces' + "',"
+        baseQuery += "'" + ''.join(major) + "',"
+        baseQuery += "'" + ''.join(minor) + "');"
+        print(baseQuery)
+
+
+def bareStats():
+    baseQuery = "INSERT INTO `character_base_stats_n_level` (`character_stats_n_level_id`," \
+                " `character_name_id`, `base_stats_hp`, `base_stats_atk`, `base_stats_def`, `base_stats_spd`, " \
+                "`hp_add_per_level`, `atk_add_per_level`, `def_add_per_level`, `stats_crit_rate_prct`, " \
+                "`stats_crit_dmg_prct`) VALUES ("
+    arr = utils.fileList('characters/')
+    prevLevel = '1'
+    for chara in arr:
+        data = utils.openJson('characters/' + chara)
+        for _ in range(len(data['levelData'])):
+            name = data['name']
+            name_id = data['name'] + "_" + str(prevLevel) + "_"+ f"{data['levelData'][_]['maxLevel']}"
+            baseQuery += f"'{name_id}', "
+            baseQuery += f"'{name}', "
+            baseQuery += f"{data['levelData'][_]['hpBase']}, "
+            baseQuery += f"{data['levelData'][_]['attackBase']}, "
+            baseQuery += f"{data['levelData'][_]['defenseBase']}, "
+            baseQuery += f"{data['levelData'][_]['speedBase']}, "
+            baseQuery += f"{data['levelData'][_]['hpAdd']}, "
+            baseQuery += f"{data['levelData'][_]['attackAdd']}, "
+            baseQuery += f"{data['levelData'][_]['defenseAdd']}, "
+            baseQuery += f"{data['levelData'][_]['crate']}, "
+            baseQuery += f"{data['levelData'][_]['cdmg']});"
+            prevLevel = str(data['levelData'][_]['maxLevel']) + "A"
+            print(baseQuery)
+            baseQuery = "INSERT INTO `character_base_stats_n_level` (`character_stats_n_level_id`," \
+                        " `character_name_id`, `base_stats_hp`, `base_stats_atk`, `base_stats_def`, `base_stats_spd`, " \
+                        "`hp_add_per_level`, `atk_add_per_level`, `def_add_per_level`, `stats_crit_rate_prct`, " \
+                        "`stats_crit_dmg_prct`) VALUES ("
+        prevLevel = '1'
+
+def characters():
+    arr = utils.fileList('characters/')
+    baseQuery = "INSERT INTO `characters` (`character_name_id`, `character_element`, `character_path`, `traces_id`) VALUES ("
+    for chara in arr:
+        data = utils.openJson('characters/' + chara)
+        baseQuery += f"'{data['name'].lower()}', "
+        baseQuery += f"'{data['damageType']['name'].lower()}', "
+        baseQuery += f"'{data['baseType']['name'].lower()}', "
+        baseQuery += f"'{data['name'].lower()}_traces');"
+        print(baseQuery)
+        baseQuery = "INSERT INTO `characters` (`character_name_id`, `character_element`, `character_path`, `traces_id`) VALUES ("
 def main():
     # a,b = dataForTraces()
     # for item in b:
     #     print(item)
-    tracesToHTML()
+    # tracesForDB()
+    # bareStats()
+    characters()
 
 if __name__ == '__main__':
     main()

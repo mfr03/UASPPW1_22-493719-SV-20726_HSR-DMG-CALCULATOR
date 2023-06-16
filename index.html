@@ -23,12 +23,8 @@
                                 <div id="selection-character" class="row mt-1">
                                     <div class="col-7">
                                         <p>Seele</p>
-                                        <select class="form-select-sm">
-                                            <option selected value="1">Level 1</option>
-                                            <option value="20">Level 20</option>
-                                            <option value="30">Level 30</option>
-                                            <option value="40">Level 40</option>
-                                        </select>
+                                        <label class="col-form-label-sm" for="chara-level">Character Level</label>
+                                        <input id="chara-level" type="number" class="form-control-sm" min="1" max="80" oninput="">
                                         <select class="form-select-sm">
                                             <option selected value="0">E0</option>
                                             <option value="1">E1</option>
@@ -38,6 +34,9 @@
                                             <option value="3">E5</option>
                                             <option value="3">E6</option>
                                         </select>
+                                        <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#tracesModal">
+                                            Traces
+                                          </button>
                                     </div>
                                     <div class="col-5">
                                         <button type="button" class="btn p-0 mt-1" data-bs-toggle="modal" data-bs-target="#charactersModal">
@@ -623,9 +622,7 @@
                                     </div>
                                 </div>
                                 <div id="set_bonuses">
-                                    <h4>set bonus 2</h4>
-                                    <h4>set bonus 2</h4>
-                                    <h4>set bonus 2</h4>
+                                    
                                 </div>
                               </div>
                             <div class="carousel-item">
@@ -848,8 +845,47 @@
                 </div>
             </div>
         </div>
+        <div id="modal-list">
+            <div class="modal fade" id="tracesModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p class="modal-title fw-bold">Character Selections</p>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="majorTraces">
+                                <label for="majorTraces">Major Traces</label>
+                                <div>
+                                    <button type="button" class="btn" onclick="addMajorTraces('Nightshade')"><p>Nightshade When current HP percentage is 50% or lower, reduces the chance of being attacked by enemies.<p></button>
+                                    <button type="button" class="btn" onclick="addMajorTraces('Lacerate')"><p>Lacerate While Seele is in the buffed state, her <span style="color:#7788ff;">Quantum</span> RES PEN increases by 20%.<p></button>
+                                    <button type="button" class="btn" onclick="addMajorTraces('Rippling Waves')"><p>Rippling Waves After using a Basic ATK, Seele's next action will be Advanced Forward by 20% .<p></button>
+                                </div>
+                            </div>
+                            <div id="minorTraces">
+                                <label for="minorTraces">MinorTraces</label>
+                                <div>
+                                    <button type="button" class="btn" onclick="addMinorTraces('ATK', 0.04)"><p>ATK Boost 4.0%<p></button>
+                                    <button type="button" class="btn" onclick="addMinorTraces('CRIT DMG', 0.053)"><p>CRIT DMG Boost 5.3%<p></button>
+                                    <button type="button" class="btn" onclick="addMinorTraces('ATK', 0.04)"><p>ATK Boost 4.0%<p></button>
+                                    <button type="button" class="btn" onclick="addMinorTraces('DEF', 0.05)"><p>DEF Boost 5.0%<p></button>
+                                    <button type="button" class="btn" onclick="addMinorTraces('ATK', 0.06)"><p>ATK Boost 6.0%<p></button>
+                                    <button type="button" class="btn" onclick="addMinorTraces('CRIT DMG', 0.08)"><p>CRIT DMG Boost 8.0%<p></button>
+                                    <button type="button" class="btn" onclick="addMinorTraces('ATK', 0.06)"><p>ATK Boost 6.0%<p></button>
+                                    <button type="button" class="btn" onclick="addMinorTraces('CRIT DMG', 0.107)"><p>CRIT DMG Boost 10.7%<p></button>
+                                    <button type="button" class="btn" onclick="addMinorTraces('ATK', 0.08)"><p>ATK Boost 8.0%<p></button>
+                                    <button type="button" class="btn" onclick="addMinorTraces('DEF', 0.075)"><p>DEF Boost 7.5%<p></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
     <script src="js/bootstrap.bundle.js"></script>
     <script src="charactersAndLightCones.js"></script>
+    <script src="characterTraces.js"></script>
 </html>
