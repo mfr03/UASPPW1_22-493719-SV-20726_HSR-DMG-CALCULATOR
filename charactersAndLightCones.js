@@ -5,13 +5,8 @@ var currentHead = 'geniuss';
 var currentBody = 'geniuss';
 var currentFeet = 'geniuss';
 var currentHands = 'geniuss';
-var currentSphere = 'herta';
-var currentRope = 'herta';
-
-function setValues(characterName)
-{
-
-}
+var currentSphere = 'hertas';
+var currentRope = 'hertas';
 
 
 function changeRelic(relicName, relicPiece)
@@ -163,22 +158,29 @@ function checkSetBonus()
 function giveSetBonus(two, four, twoSR)
 {
     var setBonus = document.getElementById("set_bonuses");
-    if(two.length != 0)
+    setBonus.innerHTML = "";
+    var getBonus;
+    if(two.length != 0 && four == '') 
     {   
-        // make the query
-        // add the element to DOM
-        // call function to update the stats according to bonus
-        setBonus.innerHTML += "<p>two set bonus</p>"
+        for(var i = 0; i < two.length; i++)
+        {
+            getBonus = getRelicDesc(two[i]);
+            setBonus.innerHTML += "<p>" + getBonus[0] + "</p>";
+        }
+        
     }
 
     if(four != '')
-    {
-        setBonus.innerHTML += "<p>tfour set bonus</p>"
+    {   
+        getBonus = getRelicDesc(four);
+        setBonus.innerHTML += "<p>" + getBonus[0] + "</p>";
+        setBonus.innerHTML += "<p>" + getBonus[1] + "</p>";
     }
 
     if(twoSR != '')
     {
-        console.log("fouck");
+        getBonus = getRelicDesc(twoSR);
+        setBonus.innerHTML += "<p>" + getBonus[0] + "</p>";
     }
 }
 
@@ -186,19 +188,37 @@ function changeCone(coneName)
 {
     var selectedImage = document.getElementById("selected-cone");
     selectedImage.src = "rsc/light-cones/" + coneName + ".png";
-    setValues(coneName);
+    var x = ultraBodge(coneName);
+    document.getElementById("cone-name").innerText = capitalize(x);
+    changeConeDesc(x);
 }
-
+function changeConeDesc(coneName)
+{
+    var coneDesc = getConeDesc(coneName + document.getElementById("superimposition").value.toString());
+    document.getElementById("cone-desc").innerHTML = "<p>" + coneDesc + "</p>"
+}
 
 function changeCharacter(characterName)
 {   
     var selectedImage = document.getElementById("selected-image");
     selectedImage.src = "rsc/characters/" + characterName + ".png";
     document.getElementById("placeholderForCharacter").value = characterName;
-    setValues(characterName);
+    document.getElementById("chara-name").innerText = capitalize(characterName);
 }
 
+function changeCharaTalentDesc(characterName)
+{      
+    if(characterName == "March 7th"){}
+    var talentDesc = getCharaTalentDesc(characterName);
+    document.getElementById("chara-talent").innerHTML = "<p>" + talentDesc + "</p>";
+}
 
+function changeCharaTraces(characterName)
+{
+    var traces = getCharaTraces(characterName);
+    document.getElementById("minorTraces").innerHTML = traces[0];
+    document.getElementById("majorTraces").innerHTML = traces[1];
+}
 function changeSelection(changeTo)
 {
     var characterSelection = document.getElementById("selection-characters");
@@ -207,7 +227,6 @@ function changeSelection(changeTo)
     {
         if(isElementVisible(characterSelection))
         {   
-            console.log('here');
             characterSelection.classList.add("d-none");
             lightConeSelection.classList.remove("d-none");
         } 
@@ -261,4 +280,80 @@ function countItemInArray(array, val)
         }
     }
     return count;
+}
+
+function ultraBodge(file)
+{
+    switch (file) {
+        case "20000": return "Arrows";
+        case "20001": return "Cornucopia";
+        case "20002": return "Collapsing Sky";
+        case "20003": return "Amber";
+        case "20004": return "Void";
+        case "20005": return "Chorus";
+        case "20006": return "Data Bank";
+        case "20007": return "Darting Arrow";
+        case "20008": return "Fine Fruit";
+        case "20009": return "Shattered Home";
+        case "20010": return "Defense";
+        case "20011": return "Loop";
+        case "20012": return "Meshing Cogs";
+        case "20013": return "Passkey";
+        case "20014": return "Adversarial";
+        case "20015": return "Multiplication";
+        case "20016": return "Mutual Demise";
+        case "20017": return "Pioneering";
+        case "20018": return "Hidden Shadow";
+        case "20019": return "Mediation";
+        case "20020": return "Sagacity";
+        case "21000": return "Post-Op Conversation";
+        case "21001": return "Good Night and Sleep Well";
+        case "21002": return "Day One of My New Life";
+        case "21003": return "Only Silence Remains";
+        case "21004": return "Memories of the Past";
+        case "21005": return "The Moles Welcome You";
+        case "21006": return "The Birth of the Self";
+        case "21007": return "Shared Feeling";
+        case "21008": return "Eyes of the Prey";
+        case "21009": return "Landau's Choice";
+        case "21010": return "Swordplay";
+        case "21011": return "Planetary Rendezvous";
+        case "21012": return "A Secret Vow";
+        case "21013": return "Make the World Clamor";
+        case "21014": return "Perfect Timing";
+        case "21015": return "Resolution Shines As Pearls of Sweat";
+        case "21016": return "Trend of the Universal Market";
+        case "21017": return "Subscribe for More!";
+        case "21018": return "Dance! Dance! Dance!";
+        case "21019": return "Under the Blue Sky";
+        case "21020": return "Geniuses' Repose";
+        case "21021": return "Quid Pro Quo";
+        case "21022": return "Fermata";
+        case "21023": return "We Are Wildfire";
+        case "21024": return "River Flows in Spring";
+        case "21025": return "Past and Future";
+        case "21026": return "Woof! Walk Time!";
+        case "21027": return "The Seriousness of Breakfast";
+        case "21028": return "Warmth Shortens Cold Nights";
+        case "21029": return "We Will Meet Again";
+        case "21030": return "This Is Me!";
+        case "21031": return "Return to Darkness";
+        case "21032": return "Carve the Moon, Weave the Clouds";
+        case "21033": return "Nowhere to Run";
+        case "21034": return "Today Is Another Peaceful Day";
+        case "23000": return "Night on the Milky Way";
+        case "23001": return "In the Night";
+        case "23002": return "Something Irreplaceable";
+        case "23003": return "But the Battle Isn't Over";
+        case "23004": return "In the Name of the World";
+        case "23005": return "Moment of Victory";
+        case "23010": return "Before Dawn";
+        case "23012": return "Sleep Like the Dead";
+        case "23013": return "Time Waits for No One";
+        case "24000": return "On the Fall of an Aeon";
+        case "24001": return "Cruising in the Stellar Sea";
+        case "24002": return "Texture of Memories";
+        default:
+            break;
+    }
 }

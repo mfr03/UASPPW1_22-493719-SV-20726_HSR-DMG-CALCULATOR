@@ -12,7 +12,60 @@ def listOfCones():
     return res
 
 def makeQueryLightConeParams():
-    lightConeList = listOfCones()
+    baseQuery = "INSERT INTO `light_cone_base_stats_n_level` (`light_cone_base_stats_n_level_id`, `cone_name_id`, " \
+                "`base_stats_hp`, `base_stats_atk`, `base_stats_def`, `hp_add_per_level`, " \
+                "`atk_add_per_level`, `def_add_per_level`) VALUES ("
+    arr = utils.fileList('lightcones/')
+    for item in arr:
+        data = utils.openJson('lightcones/' + item)
+        for num, promotion in enumerate(coneData(data).values()):
+            if num == 0:
+                identifier = "_1_20"
+            elif num == 1:
+                identifier = "_20A_30"
+            elif num == 2:
+                identifier = "_30A_40"
+            elif num == 3:
+                identifier = "_40A_50"
+            elif num == 4:
+                identifier = "_50A_60"
+            elif num == 5:
+                identifier = "_60A_70"
+            else:
+                identifier = "_70A_80"
+
+            name = data['name'].replace("'", r"\'")
+            baseQuery += "'" + name + str(identifier) + "',"
+            baseQuery += "'" + name + "',"
+            baseQuery += "'" + str(promotion['hp_base']) + "',"
+            baseQuery += "'" + str(promotion['atk_base']) + "',"
+            baseQuery += "'" + str(promotion['def_base']) + "',"
+            baseQuery += "'" + str(promotion['hp_add_per_level']) + "',"
+            baseQuery += "'" + str(promotion['atk_add_per_level']) + "',"
+            baseQuery += "'" + str(promotion['def_add_per_level']) + "');"
+            print(baseQuery)
+            baseQuery = "INSERT INTO `light_cone_base_stats_n_level` (`light_cone_base_stats_n_level_id`, `cone_name_id`, " \
+                        "`base_stats_hp`, `base_stats_atk`, `base_stats_def`, `hp_add_per_level`, " \
+                        "`atk_add_per_level`, `def_add_per_level`) VALUES ("
+
+def coneData(data):
+    data_for_each_ascension = dict()
+
+    for num, data in enumerate(data['levelData']):
+        data_for_each_ascension['promotion' + str(num)] = {"maxLevel": data['maxLevel'],
+                                                           "hp_base": data['hpBase'],
+                                                           "atk_base": data['attackBase'],
+                                                           "def_base": data['defenseBase'],
+                                                           # "crit_rate_base" : data['crate'],
+                                                           # "crit_damage_base" : data['cdmg'],
+                                                           # "break_effect_base": 0.0,
+                                                           # "stats_damage_boost_base": 0.0,
+                                                           "hp_add_per_level": data['hpAdd'],
+                                                           "atk_add_per_level": data['attackAdd'],
+                                                           "def_add_per_level": data['defenseAdd'],
+                                                           }
+    return data_for_each_ascension
+
 
 def makeQueryDesc():
     baseQuery = "INSERT INTO `light_cone_desc` (`light_cone_desc_id`, `cone_name_id`, `cone_desc`) VALUES ("
@@ -58,8 +111,16 @@ def makeQueryLightCone():
         baseQuery += f'"{data["baseType"]["name"]}");'
         print(baseQuery)
         baseQuery = "INSERT INTO `light_cones` (`cone_name_id`, `cone_path`) VALUES ("
+
+def justkillme():
+    arr = utils.fileList("lightcones/")
+
+    for item in arr:
+        data = utils.openJson("lightcones/" + item)
+        temp = item.replace(".json", "")
+        print("case " + f'"{temp}"' + ":" + " return " + f'"{data["name"]}";')
 def main():
-    makeQueryDesc()
+    justkillme()
 
 
 if __name__ == '__main__':

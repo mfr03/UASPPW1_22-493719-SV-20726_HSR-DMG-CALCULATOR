@@ -1,13 +1,6 @@
 
 function mainFormula(skillType)
 {   
-    console.log(baseDamage(skillType));
-    console.log(damageMultiplier());
-    console.log(defenseMultiplier());
-    console.log((resMultiplier()));
-    console.log(dmgTakenMultiplier());
-    console.log(universalDamageReduction());
-    console.log("_____________________" + skillType);
     var outgoingDamage = baseDamage(skillType) * damageMultiplier() * defenseMultiplier() * resMultiplier() * dmgTakenMultiplier() *  universalDamageReduction();
     var nonCrit = document.getElementById(skillType + "-res");
     var crit = document.getElementById(skillType + "-res-crit");
@@ -18,7 +11,7 @@ function mainFormula(skillType)
 
 function baseDamage(skillType)
 {   
-    var characterName = "Seele";
+    var characterName = document.getElementById("chara-name").innerText;
     var skillMultiplier = getSkill(skillType, characterName);
     var extraMultiplier = 0;
     var statsAtk = parseInt(document.getElementById("base-attack").value) + parseInt(document.getElementById("flat-attack").value)
@@ -38,9 +31,11 @@ function damageMultiplier()
 function defenseMultiplier()
 {   
     var characterLevel = document.getElementById("chara-level").value;
-    if(characterLevel.charAt(characterLevel.length - 1) == '+')
-    {
-        characterLevel = parseInt(characterLevel.replace(characterLevel.charAt(characterLevel.length - 1), ''));
+    var x = characterLevel.charAt(characterLevel.length - 1);
+    if(x == '+')
+    {   
+        x = characterLevel.replace(characterLevel.charAt(characterLevel.length - 1), '');
+        characterLevel = parseInt(x);
     }
     else
     {

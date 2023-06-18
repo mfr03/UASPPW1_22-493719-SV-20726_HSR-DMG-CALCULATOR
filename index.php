@@ -10,7 +10,7 @@
     <title>HSR Calcyklator</title>
 </head>
 <?php include 'connection.php' ?>
-<body style="min-height: 100vh;" onload="mainFormula('Ultimate'); mainFormula('BasicATK'); mainFormula('Skill')">
+<body style="min-height: 100vh;" onload="callStack()">
     <div class="container mt-5">
         <div class="row">
             <div id="form-wrapper-selection-1" class="container col-sm-3 order-sm-1 order-2 mb-sm-0 mb-3">
@@ -24,9 +24,9 @@
                             <div id="selection-characters" class="d-sm-block">
                                 <div id="selection-character" class="row mt-1">
                                     <div class="col-7">
-                                        <p>Seele</p>
+                                        <p id="chara-name">Seele</p>
                                         <label class="col-form-label-sm" for="chara-level">Character Level</label>
-                                        <input id="chara-level" type="text" class="form-control-sm" value="80">
+                                        <input id="chara-level" type="text" class="form-control-sm" value="80" onchange="callStack()">
                                         <select class="form-select-sm">
                                             <option selected value="0">E0</option>
                                             <option value="1">E1</option>
@@ -38,7 +38,24 @@
                                         </select>
                                         <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#tracesModal">
                                             Traces
-                                          </button>
+                                        </button>
+                                        <select id="talent-level" class="form-select-sm" onchange="callStack()">
+                                            <option selected value="1">Level 1</option>
+                                            <option value="2">Level 2</option>
+                                            <option value="3">Level 3</option>
+                                            <option value="4">Level 4</option>
+                                            <option value="5">Level 5</option>
+                                            <option value="6">Level 6</option>
+                                            <option value="7">Level 7</option>
+                                            <option value="8">Level 8</option>
+                                            <option value="9">Level 9</option>
+                                            <option value="10">Level 10</option>
+                                            <option value="11">Level 11</option>
+                                            <option value="12">Level 12</option>
+                                            <option value="13">Level 13</option>
+                                            <option value="14">Level 14</option>
+                                            <option value="15">Level 15</option>
+                                        </select>
                                     </div>
                                     <div class="col-5">
                                         <button type="button" class="btn p-0 mt-1" data-bs-toggle="modal" data-bs-target="#charactersModal">
@@ -54,91 +71,91 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('arlan')" value="arlan">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('arlan'); callStack()" value="arlan">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/arlan.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('asta')" value="asta">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('asta'); callStack()" value="asta">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/asta.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('bailu')" value="bailu">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('bailu'); callStack()" value="bailu">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/bailu.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('bronya')" value="bronya">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('bronya'); callStack()" value="bronya">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/bronya.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('clara')" value="clara">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('clara'); callStack()" value="clara">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/clara.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('danheng')" value="danheng">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('danheng'); callStack()" value="danheng">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/danheng.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('gepard')" value="gepard">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('gepard'); callStack()" value="gepard">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/gepard.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('herta')" value="herta">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('herta'); callStack()" value="herta">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/herta.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('himeko')" value="himeko">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('himeko'); callStack()" value="himeko">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/himeko.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('hook')" value="hook">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('hook'); callStack()" value="hook">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/hook.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('jingyuan')" value="jingyuan">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('jingyuan'); callStack()" value="jingyuan">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/jingyuan.png" width="64px">
                                                     </button>
-                                                    <button type="dbutton" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('kafka')" value="kafka">
+                                                    <button type="dbutton" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('kafka'); callStack()" value="kafka">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/kafka.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('luocha')" value="luocha">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('luocha'); callStack()" value="luocha">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/luocha.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('mitsuki')" value="mar7th">
-                                                        <img class="img-fluid rounded-2" src="rsc/characters/mitsuki.png" width="64px">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('march 7th'); callStack()" value="mar7th">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/march 7th.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('natasha')" value="natasha">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('natasha'); callStack()" value="natasha">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/natasha.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('pela')" value="pela">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('pela'); callStack()" value="pela">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/pela.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('playerboy1')" value="playerboy">
-                                                        <img class="img-fluid rounded-2" src="rsc/characters/playerboy1.png" width="64px">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('playerboy'); callStack()" value="playerboy">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/playerboy.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('playerboy2')" value="playerboy2">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('playerboy2'); callStack()" value="playerboy2">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/playerboy2.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('playergirl1')" value="playergirl">
-                                                        <img class="img-fluid rounded-2" src="rsc/characters/playergirl1.png" width="64px">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('playergirl'); callStack()" value="playergirl">
+                                                        <img class="img-fluid rounded-2" src="rsc/characters/playergirl.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('playergirl2')" value="playergirl2">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('playergirl2'); callStack()" value="playergirl2">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/playergirl2.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('qingque')" value="qingque">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('qingque'); callStack()" value="qingque">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/qingque.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('sampo')" value="sampo">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('sampo'); callStack()" value="sampo">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/sampo.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('seele')" value="seele">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('seele'); callStack()" value="seele">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/seele.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('serval')" value="serval">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('serval'); callStack()" value="serval">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/serval.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('silverwolf')" value="silverwwolf">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('SilverWolf'); callStack()" value="silverwwolf">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/silverwolf.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('sushang')" value="sushang">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('sushang'); callStack()" value="sushang">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/sushang.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('tingyun')" value="tingyuan">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('tingyun'); callStack()" value="tingyuan">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/tingyun.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('welt')" value="welt">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('welt'); callStack()" value="welt">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/welt.png" width="64px">
                                                     </button>
-                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('yanqing')" value="yangqing">
+                                                    <button type="button" class="btn char" data-bs-dismiss="modal" onclick="changeCharacter('yanqing'); callStack()" value="yangqing">
                                                         <img class="img-fluid rounded-2" src="rsc/characters/yanqing.png" width="64px">
                                                     </button>
                                                     <button class="none" id="placeholderForCharacter"></button>
@@ -149,7 +166,7 @@
                                 </div>
                                 <div id="selection-character-skills" class="row mt-2">
                                     <div class="col-4">
-                                        <select id="BasicATK-level" class="form-select-sm">
+                                        <select id="BasicATK-level" class="form-select-sm" onchange="callStack()">
                                             <option value="0">N. Attack</option>
                                             <option value="1">Level 1</option>
                                             <option selected value="2">Level 2</option>
@@ -163,14 +180,14 @@
                                         </select>
                                     </div>
                                     <div class="col-4">
-                                        <select id="Skill-level"class="form-select-sm">
+                                        <select id="Skill-level"class="form-select-sm" onchange="callStack()">
                                             <option selected value="0">Skill 1</option>
                                             <option value="1">Level 1</option>
                                             <option value="2">Level 2</option>
                                             <option value="3">Level 3</option>
                                             <option value="4">Level 4</option>
-                                            <option selected value="5">Level 5</option>
-                                            <option value="6">Level 6</option>
+                                            <option value="5">Level 5</option>
+                                            <option selected value="6">Level 6</option>
                                             <option value="7">Level 7</option>
                                             <option value="8">Level 8</option>
                                             <option value="9">Level 9</option>
@@ -183,7 +200,7 @@
                                         </select>
                                     </div>
                                     <div class="col-4">
-                                        <select id="Ultimate-level" class="form-select-sm">
+                                        <select id="Ultimate-level" class="form-select-sm" onchange="callStack()">
                                             <option selected value="0">Ult</option>
                                             <option value="1">Level 1</option>
                                             <option value="2">Level 2</option>
@@ -203,22 +220,23 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div id="selection-character-unique-buff" class="row mt-2">
-                                    <p>Unique Buffs:</p>
+                                <div id="selection-character-talent" class="row mt-2">
+                                    <p>Character Talent: </p>
+                                    <p id="chara-talent"></p>
                                 </div>
                             </div>
                         </div>
                         <div id="selection-cones" class="col-sm-12 d-none d-sm-block">
-                            Cone selection <!-- need to make this selection dynamics based on character path-->
+                            <p id="cone-name">Fermata</p>
                             <div class="row">
                                 <div class="col-7 mt-1">
                                     <div class="d-flex justify-content-between">
                                         <label class="col-form-label-sm" for="skills-1">Cone level</label>
-                                        <input id="cone-level" type="number" class="form-control-sm" min="1" max="80">
+                                        <input id="cone-level" type="text" class="form-control-sm" value="80" onchange="callStack()">
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <label class="col-form-label-sm" for="skills-1">Superimposition</label>
-                                        <input id="superimposition" type="number" class="form-control-sm" min="1" max="80">
+                                        <input id="superimposition" type="number" class="form-control-sm" value="1" onchange="callStack()">
                                     </div>
                                     <div class="form-check mt-1">
                                         <input class="form-check-input" type="checkbox" value="traces6" id="cTraces6">
@@ -231,6 +249,11 @@
                                     </button>
 
                                 </div>
+                                <div class="row">
+                                    <div id="cone-desc" class="col-12">
+                                            <p>Increases the Break Effect dealt by the wearer by 16%, and increases their DMG to enemies afflicted with Shock or Wind Shear by 16%. This also applies to DoT.</p>
+                                    </div>
+                                </div>
                                 <div class="modal fade" id="conesModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
                                     <div class="modal-dialog modal-dialog-centered modal-lg">
                                         <div class="modal-content">
@@ -240,202 +263,203 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20001')">
+                                                <!-- dont have 20000 picture lol -->
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20001');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20001.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20002')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20002');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20002.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20003')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20003');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20003.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20004')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20004');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20004.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20005')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20005');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20005.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20006')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20006');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20006.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20007')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20007');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20007.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20008')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20008');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20008.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20009')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20009');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20009.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20010')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20010');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20010.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20011')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20011');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20011.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20012')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20012');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20012.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20013')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20013');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20013.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20014')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20014');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20014.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20015')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20015');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20015.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20016')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20016');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20016.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20017')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20017');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20017.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20018')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20018');  callStack())">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20018.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20019')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20019');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20019.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20020')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20020');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/20020.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21000')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21000');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21000.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21001')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21001');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21001.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21002')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21002');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21002.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21003')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21003');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21003.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21004')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21004');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21004.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21005')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21005');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21005.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21006')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21006');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21006.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21007')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21007');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21007.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21008')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21008');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21008.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21009')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21009');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21009.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21010')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21010');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21010.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21011')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21011');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21011.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21012')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21012');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21012.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21013')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21013');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21013.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21014')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21014');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21014.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21015')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21015');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21015.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21016')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21016');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21016.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21017')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21017');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21017.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21018')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21018');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21018.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21019')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21019');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21019.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21020')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21020');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21020.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21021')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21021');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21021.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21022')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21022');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21022.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21023')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21023');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21023.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21024')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21024');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21024.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21025')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21025');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21025.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21026')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21026');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21026.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21027')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21027');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21027.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21028')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21028');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21028.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21029')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21029');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21029.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21030')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21030');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21030.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21031')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21031');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21031.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21032')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21032');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21032.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21033')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21033';  callStack())">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21033.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21034')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21034');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/21034.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23000')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23000');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/23000.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23001')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23001');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/23001.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23002')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23002');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/23002.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23003')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23003');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/23003.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23004')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23004');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/23004.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23005')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23005');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/23005.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23010')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23010');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/23010.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23012')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23012');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/23012.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('24000')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('24000');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/24000.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('24001')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('24001');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/24001.png" width="64px">
                                                 </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('24002')">
+                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('24002');  callStack()">
                                                     <img class="img-fluid rounded-2" src="rsc/light-cones/24002.png" width="64px">
                                                 </button>
                                             </div>
@@ -747,10 +771,10 @@
                             <p>Attack</p>
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                        <input id="base-attack" type="num" class="container btn btn-dark" value="1049">
+                        <input disabled id="base-attack" type="num" class="container btn btn-dark">
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                        <input id="flat-attack" type="num" class="container btn btn-dark" value="1378">
+                        <input id="flat-attack" type="num" class="container btn btn-dark" value="1378" onchange="callStack()">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
@@ -758,10 +782,10 @@
                             <p>Defense</p>
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                        <input id="base-defense" type="num" class="container btn btn-dark" value="648">
+                        <input disabled id="base-defense" type="num" class="container btn btn-dark" value="648">
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                        <input id="flat-defense" type="num" class="container btn btn-dark" value="71">
+                        <input id="flat-defense" type="num" class="container btn btn-dark" value="71" onchange="callStack()">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
@@ -769,10 +793,10 @@
                             <p>Crit Rate %</p>
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                        <input id="base-crit-rate" type="num" class="container btn btn-dark" value="5">
+                        <input disabled id="base-crit-rate" type="num" class="container btn btn-dark">
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                        <input id="flat-crit-rate" type="num" class="container btn btn-dark" value="61.5">
+                        <input id="flat-crit-rate" type="num" class="container btn btn-dark" value="61.5" onchange="callStack()">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
@@ -780,10 +804,10 @@
                             <p>Crit Damage</p>
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                        <input id="base-crit-dmg" type="num" class="container btn btn-dark" value="50">
+                        <input disabled id="base-crit-dmg" type="num" class="container btn btn-dark">
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                        <input id="flat-crit-dmg" type="num" class="container btn btn-dark" value="67,5">
+                        <input id="flat-crit-dmg" type="num" class="container btn btn-dark" value="67,5" onchange="callStack()">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
@@ -791,10 +815,10 @@
                             <p>Break Effect %</p>
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                        <input id="base-break-effect" type="num" class="container btn btn-dark" value="0">
+                        <input disabled id="base-break-effect" type="num" class="container btn btn-dark">
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                        <input id="flat-break-effect" type="num" class="container btn btn-dark" value="11">
+                        <input id="flat-break-effect" type="num" class="container btn btn-dark" value="11" onchange="callStack()">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
@@ -802,10 +826,10 @@
                             <p>Elemental Damage Boost</p>
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <input id="base-elemental-boost" type="num" class="container btn btn-dark" value="0">
+                            <input disabled id="base-elemental-boost" type="num" class="container btn btn-dark">
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <input id="flat-elemental-boost" type="num" class="container btn btn-dark" value="48,8">
+                            <input id="flat-elemental-boost" type="num" class="container btn btn-dark" value="48,8" onchange="callStack()">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
@@ -813,10 +837,10 @@
                             <p>Elemental Penetration %</p>
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <input id="base-elemental-pen" type="num" class="container btn btn-dark" value="0">
+                            <input disabled id="base-elemental-pen" type="num" class="container btn btn-dark" value="0">
                         </div>
                         <div class="col-3 d-flex justify-content-end">
-                            <input id="flat-elemental-pen" type="num" class="container btn btn-dark" value="0">
+                            <input id="flat-elemental-pen" type="num" class="container btn btn-dark" value="0" onchange="callStack()">
                         </div>
                     </div>
                 </div>
@@ -877,17 +901,17 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div id="majorTraces">
-                                <label for="majorTraces">Major Traces</label>
-                                <div>
+                            <div id="labelMajorTraces">
+                                <label for="labelMajorTraces">Major Traces</label>
+                                <div id="majorTraces" class="d-flex flex-column justify-content-evenly ">
                                     <button type="button" class="btn" onclick="addMajorTraces('Nightshade')"><p>Nightshade When current HP percentage is 50% or lower, reduces the chance of being attacked by enemies.<p></button>
                                     <button type="button" class="btn" onclick="addMajorTraces('Lacerate')"><p>Lacerate While Seele is in the buffed state, her <span style="color:#7788ff;">Quantum</span> RES PEN increases by 20%.<p></button>
                                     <button type="button" class="btn" onclick="addMajorTraces('Rippling Waves')"><p>Rippling Waves After using a Basic ATK, Seele's next action will be Advanced Forward by 20% .<p></button>
                                 </div>
                             </div>
-                            <div id="minorTraces">
-                                <label for="minorTraces">MinorTraces</label>
-                                <div>
+                            <div id="labelMinorTraces">
+                                <label for="labelMinorTraces">MinorTraces</label>
+                                <div id="minorTraces">
                                     <button type="button" class="btn" onclick="addMinorTraces('ATK', 0.04)"><p>ATK Boost 4.0%<p></button>
                                     <button type="button" class="btn" onclick="addMinorTraces('CRIT DMG', 0.053)"><p>CRIT DMG Boost 5.3%<p></button>
                                     <button type="button" class="btn" onclick="addMinorTraces('ATK', 0.04)"><p>ATK Boost 4.0%<p></button>
@@ -908,8 +932,10 @@
     </div>
 </body>
     <script src="js/bootstrap.bundle.js"></script>
+    <script src="queryToDB.js"></script>
     <script src="charactersAndLightCones.js"></script>
     <script src="characterTraces.js"></script>
-    <script src="characterToDB.js"></script>
+    <script src="calculateBaseStats.js"></script>
     <script src="calculateDamage.js"></script>
+    <script src="main.js"></script>
 </html>

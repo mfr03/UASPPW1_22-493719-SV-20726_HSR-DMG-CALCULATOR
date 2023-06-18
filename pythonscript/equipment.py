@@ -1,3 +1,5 @@
+import re
+
 import utils
 
 def processRelics(string):
@@ -29,18 +31,70 @@ def processRelics(string):
 def main():
     for path in utils.fileList('relics/'):
         data = utils.openJson('relics/' + path)
-        print(data['name'])
+        name = data['name'].split(" ")[0] + "s"
+        if name == "Pan-Galactics":
+            name = 'Ipcs'
+        elif name == "Talia:s":
+            name = 'Talias'
+        elif name == 'Spaces':
+            name = "Hertas"
+        elif name == 'Inerts':
+            name = "Salsottos"
+        elif name == 'Sprightlys':
+            name = "Vonwacqs"
+        elif name == "Celestials":
+            name = "Planets"
+        elif name == "Fleets":
+            name = "Xianzhou"
+
         if len(data['skills']) > 1:
-            x = processRelics(data['skills'][0]['desc'])
-            print(data['skills'][0]['desc'])
-            print(x,  data['skills'][0]['params'])
-            y = processRelics(data['skills'][1]['desc'])
-            print(data['skills'][1]['desc'])
-            print(y,  data['skills'][1]['params'])
+            baseQuery = "INSERT INTO `relics` (`relics_id`, `two_piece_set_bonus`, `four_piece_set_bonus`) VALUES ("
+            baseQuery += "'" + name + "', "
+            # two-piece set
+            if data['skills'][0]['params']:
+                descTwo = data['skills'][0]['desc']
+                for enum, param in enumerate(data['skills'][0]['params'], 1):
+
+                    if param < 1:
+                        param *=100
+
+                    descTwo = re.sub(r"<nobr>", "", descTwo)
+                    descTwo = re.sub(r"</nobr>", "", descTwo)
+                    descTwo = re.sub(r"#" + f"{enum}" + r".{0,4}\]", f"{param}", descTwo);
+            else:
+                descTwo = data['skills'][0]['desc'].replace("'", r"\'")
+
+            baseQuery += "'" + descTwo.replace("'", r"\'") + "', "
+            # four-piece set
+            if data['skills'][1]['params']:
+                descFour = data['skills'][1]['desc']
+                for enum, param in enumerate(data['skills'][1]['params'], 1):
+
+                    if param < 1:
+                        param *= 100
+                    descFour= re.sub(r"<nobr>", "", descFour)
+                    descFour = re.sub(r"</nobr>", "", descFour)
+                    descFour = re.sub(r"#" + fr"{enum}" + r".{0,4}\]", f"{param}", descFour);
+
+            else:
+                descFour = data['skills'][1]['desc'].replace("'", r"\'")
+
+            baseQuery += "'" + descFour.replace("'", r"\'") + "'); "
+            print(baseQuery)
         else:
-            x = processRelics(data['skills'][0]['desc'])
-            print(data['skills'][0]['desc'])
-            print(x,  data['skills'][0]['params'])
+            baseQuery = "INSERT INTO `relics` (`relics_id`, `two_piece_set_bonus`) VALUES ("
+            baseQuery += "'" + name + "', "
+            desc = data['skills'][0]['desc']
+            for enum, param in enumerate(data['skills'][0]['params'], 1):
+
+                if param < 1:
+                    param *= 100
+
+                desc = re.sub(r"<nobr>", "", desc)
+                desc = re.sub(r"</nobr>", "", desc)
+                desc = re.sub(r"#" + fr"{enum}" + r".{0,4}\]", f"{param}", desc);
+            baseQuery += "'" + desc.replace("'", r"\'") + "'); "
+            print(baseQuery)
 
 
 if __name__ == '__main__':

@@ -4,6 +4,12 @@ import utils
 import re
 
 
+def temp():
+    arr = utils.fileList('characters/')
+    for item in arr:
+        data = utils.openJson('characters/' + item)
+        dataForAscension(data)
+
 def dataForAscension(data):
     data_for_each_ascension = dict()
 
@@ -163,8 +169,7 @@ def main():
     # for item in b:
     #     print(item)
     # tracesForDB()
-    # bareStats()
-    characters()
-
+    bareStats()
+    # characters()
 if __name__ == '__main__':
     main()
