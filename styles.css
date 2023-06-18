@@ -4,6 +4,11 @@
     background-color: rgba(0, 0, 0, 0.2);
 }
 
+.card-bg
+{
+    background-color: #976c44 !important;
+}
+
 .form-control-sm
 {
     width:50px;
@@ -21,7 +26,6 @@
 {
     display: none;
 }
-
 
 body
 {

@@ -3,7 +3,7 @@ import glob
 import PIL
 from webptools import dwebp
 
-arr = os.listdir(r".")
+arr = os.listdir(r"")
 
 def foo(file):
     filePng = file.replace(".webp", ".png")

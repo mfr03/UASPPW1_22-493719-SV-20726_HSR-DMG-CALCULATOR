@@ -6,61 +6,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="codeistole.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>HSR Calcyklator</title>
+    <title>paretto</title>
 </head>
 <?php include 'connection.php' ?>
 <body style="min-height: 100vh;" onload="callStack()">
     <div class="container mt-5">
         <div class="row">
-            <div id="form-wrapper-selection-1" class="container col-sm-3 order-sm-1 order-2 mb-sm-0 mb-3">
+            <div id="form-wrapper-selection-1" class="container col-sm-12 col-md-8 col-lg-7 col-xl-3 order-sm-1 order-2 mb-sm-4 mb-4">
                 <div class="row h-100">
-                    <div id="selection_1" class="col-sm-12 order-1 h-100">
+                    <div id="selection_1" class="col-sm-12 order-1 h-100 rounded-3">
                         <div class="col-sm-12 d-flex flex-column">
                             <div>
                                 <a class="" onclick="changeSelection('character')">Characters</a>
-                                <a class="d-sm-none d-inline" onclick="changeSelection('cone')">Light Cones</a>
+                                <a class="d-inline" onclick="changeSelection('cone')">Light Cones</a>
                             </div>
-                            <div id="selection-characters" class="d-sm-block">
+                            <div id="selection-characters">
                                 <div id="selection-character" class="row mt-1">
-                                    <div class="col-7">
-                                        <p id="chara-name">Seele</p>
-                                        <label class="col-form-label-sm" for="chara-level">Character Level</label>
-                                        <input id="chara-level" type="text" class="form-control-sm" value="80" onchange="callStack()">
-                                        <select class="form-select-sm">
-                                            <option selected value="0">E0</option>
-                                            <option value="1">E1</option>
-                                            <option value="2">E2</option>
-                                            <option value="3">E3</option>
-                                            <option value="3">E4</option>
-                                            <option value="3">E5</option>
-                                            <option value="3">E6</option>
-                                        </select>
-                                        <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#tracesModal">
-                                            Traces
-                                        </button>
-                                        <select id="talent-level" class="form-select-sm" onchange="callStack()">
-                                            <option selected value="1">Level 1</option>
-                                            <option value="2">Level 2</option>
-                                            <option value="3">Level 3</option>
-                                            <option value="4">Level 4</option>
-                                            <option value="5">Level 5</option>
-                                            <option value="6">Level 6</option>
-                                            <option value="7">Level 7</option>
-                                            <option value="8">Level 8</option>
-                                            <option value="9">Level 9</option>
-                                            <option value="10">Level 10</option>
-                                            <option value="11">Level 11</option>
-                                            <option value="12">Level 12</option>
-                                            <option value="13">Level 13</option>
-                                            <option value="14">Level 14</option>
-                                            <option value="15">Level 15</option>
-                                        </select>
+                                    <div class="col-7 col-sm-7 row-cols-4">
+                                        <div class="row col-12 form=group mt-1">
+                                            <label class="col-5 col-sm-5 col-form-label col-form-label-sm" for="chara-level">Level</label>
+                                            <div class="col-7 col-sm-5 col-lg-7 col-md-5">
+                                                <input id="chara-level" type="text" class="form-control form-select-sm" value="80" onchange="callStack()">
+                                            </div>
+                                        </div>
+                                        <div class="row col-12 form=group mt-1">
+                                            <label class="col-5 col-sm-5 col-form-label col-form-label-sm" for="eidolon-level">Eidolon</label>
+                                            <div class="col-7 col-sm-5 col-lg-7 col-md-5">
+                                                <select id="eidolon-level" class="form-select form-select-sm">
+                                                    <option selected value="0">E0</option>
+                                                    <option value="1">E1</option>
+                                                    <option value="2">E2</option>
+                                                    <option value="3">E3</option>
+                                                    <option value="3">E4</option>
+                                                    <option value="3">E5</option>
+                                                    <option value="3">E6</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row col-12 form=group mt-1">
+                                            <label class="col-5 col-sm-5 col-form-label col-form-label-sm" for="chara-traces">Traces</label>
+                                            <div class="col-7 col-sm-5 col-lg-7 col-md-5">
+												<button id="chara-traces" type="button" class="form-control btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#tracesModal">
+													Traces
+												</button>
+                                            </div>
+                                        </div>
+                                        <div class="row col-12 mt-1">
+                                            <label class="col-5 col-sm-5 col-form-label col-form-label-sm" for="talent-level">Talent</label>
+                                            <div class="col-7 col-sm-5 col-lg-7 col-md-5">
+                                                <select id="talent-level" class="form-select form-select-sm" onchange="callStack()">
+                                                    <option selected value="1">Level 1</option>
+                                                    <option value="2">Level 2</option>
+                                                    <option value="3">Level 3</option>
+                                                    <option value="4">Level 4</option>
+                                                    <option value="5">Level 5</option>
+                                                    <option value="6">Level 6</option>
+                                                    <option value="7">Level 7</option>
+                                                    <option value="8">Level 8</option>
+                                                    <option value="9">Level 9</option>
+                                                    <option value="10">Level 10</option>
+                                                    <option value="11">Level 11</option>
+                                                    <option value="12">Level 12</option>
+                                                    <option value="13">Level 13</option>
+                                                    <option value="14">Level 14</option>
+                                                    <option value="15">Level 15</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-5">
-                                        <button type="button" class="btn p-0 mt-1" data-bs-toggle="modal" data-bs-target="#charactersModal">
-                                            <img id="selected-image" class="img-fluid" src="rsc/characters/seele.png" width="96px">
-                                        </button>
+                                        <div class="card col-10 col-xl-12">
+                                            <button type="button" class="btn p-0 mt-1 card-img-top" data-bs-toggle="modal" data-bs-target="#charactersModal">
+                                            <img id="selected-image" class="img-fluid" src="rsc/characters/seele.png" width="96px" style="">
+                                            </button>
+                                            <div class="card-body text-center">
+                                                <p id="chara-name">Seele</p>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="modal fade" id="charactersModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
                                         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -164,10 +188,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="selection-character-skills" class="row mt-2">
-                                    <div class="col-4">
+                                <div id="selection-character-skills" class="row mt-2 d-flex flex-row justify-content-center">
+                                    <div class="col-4 form-group">
+                                        <p>Basic ATK</p>
                                         <select id="BasicATK-level" class="form-select-sm" onchange="callStack()">
-                                            <option value="0">N. Attack</option>
                                             <option value="1">Level 1</option>
                                             <option selected value="2">Level 2</option>
                                             <option  value="3">Level 3</option>
@@ -179,29 +203,9 @@
                                             <option value="9">Level 9</option>
                                         </select>
                                     </div>
-                                    <div class="col-4">
-                                        <select id="Skill-level"class="form-select-sm" onchange="callStack()">
-                                            <option selected value="0">Skill 1</option>
-                                            <option value="1">Level 1</option>
-                                            <option value="2">Level 2</option>
-                                            <option value="3">Level 3</option>
-                                            <option value="4">Level 4</option>
-                                            <option value="5">Level 5</option>
-                                            <option selected value="6">Level 6</option>
-                                            <option value="7">Level 7</option>
-                                            <option value="8">Level 8</option>
-                                            <option value="9">Level 9</option>
-                                            <option value="10">Level 10</option>
-                                            <option value="11">Level 11</option>
-                                            <option value="12">Level 12</option>
-                                            <option value="13">Level 13</option>
-                                            <option value="14">Level 14</option>
-                                            <option value="15">Level 15</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-4">
-                                        <select id="Ultimate-level" class="form-select-sm" onchange="callStack()">
-                                            <option selected value="0">Ult</option>
+                                    <div class="col-4 form-group">
+                                        <p>Skill</p>
+                                        <select id="Skill-level" class="form-select-sm" onchange="callStack()">
                                             <option value="1">Level 1</option>
                                             <option value="2">Level 2</option>
                                             <option value="3">Level 3</option>
@@ -219,6 +223,28 @@
                                             <option value="15">Level 15</option>
                                         </select>
                                     </div>
+                                    <div class="col-4">
+										<div class="form-group">
+                                            <p>Ultimate</p>
+                                            <select id="Ultimate-level" class="form-select-sm" onchange="callStack()">
+                                                <option value="1">Level 1</option>
+                                                <option value="2">Level 2</option>
+                                                <option value="3">Level 3</option>
+                                                <option value="4">Level 4</option>
+                                                <option value="5">Level 5</option>
+                                                <option value="6">Level 6</option>
+                                                <option value="7">Level 7</option>
+                                                <option selected value="8">Level 8</option>
+                                                <option value="9">Level 9</option>
+                                                <option value="10">Level 10</option>
+                                                <option value="11">Level 11</option>
+                                                <option value="12">Level 12</option>
+                                                <option value="13">Level 13</option>
+                                                <option value="14">Level 14</option>
+                                                <option value="15">Level 15</option>
+                                            </select>
+										</div>
+                                    </div>
                                 </div>
                                 <div id="selection-character-talent" class="row mt-2">
                                     <p>Character Talent: </p>
@@ -226,7 +252,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="selection-cones" class="col-sm-12 d-none d-sm-block">
+                        <div id="selection-cones" class="col-sm-12 d-none">
                             <p id="cone-name">Fermata</p>
                             <div class="row">
                                 <div class="col-7 mt-1">
@@ -471,9 +497,9 @@
                     </div>
                 </div>
             </div>
-            <div id="form-wrapper-selection-2" class="container col-sm-3 order-sm-1 order-2 mb-sm-0 mb-3">
+            <div id="form-wrapper-selection-2" class="container col-sm-12 col-md-8 col-lg-7 col-xl-3 order-sm-1 order-2 mb-sm-4 mb-4 ">
                 <div class="row h-100">
-                    <div id="selection_2" class="col-sm-12 order-2 h-100">
+                    <div id="selection_2" class="col-sm-12 order-2 h-100 rounded-3">
                         <div class="d-flex flex-row justify-content-between">
                             <a data-bs-target="#carousel_selection_2" data-bs-slide-to="0">Equipment</a> 
                             <a data-bs-target="#carousel_selection_2" data-bs-slide-to="1">Enemies</a>
@@ -756,7 +782,7 @@
                     </div>
                 </div>
             </div>
-            <div id="form-wrapper-input-output" class="container col-sm-5 row-cols-1 order-sm-2 order-3 mb-sm-0 mb-3">
+            <div id="form-wrapper-input-output" class="container col-sm-12 col-md-8 col-lg-7 col-xl-5 row-cols-1 order-sm-2 order-3 mb-sm-4 mb-4 rounded-3">
                 <div id="form-input-stats" class="col-sm-12 row-cols-sm-1">
                     <div class="col-sm-12 row justify-content-end">
                         <div class="col-3 text-center">
