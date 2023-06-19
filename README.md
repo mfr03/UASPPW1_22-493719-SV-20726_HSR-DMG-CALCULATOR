@@ -61,3 +61,136 @@ Web ini responsive, dengan semakin pendek lebar layar maka kolom akan tersusun a
 ![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/ab00ebbf-4937-4973-b3f1-4345d1ebc462)
 
 ## Direct Feedback
+Pengguna mendapatkan feedback dalam bentuk perubahan angka damage ataupun base stats dengan mengubah parameter yang tersedia (input fields/modal). Berikut ini contoh salah satu alur kerja callStack yang memberi feedback kepada user.
+
+```html
+<input id="chara-level" type="text" class="form-control form-select-sm" value="80" onchange="callStack()">
+```
+merupakan salah satu parameter yang bertanggung jawab atas level karakter. Dalam perubahan nilai karakter tersebut, maka akan memamggil function javascript callStack().
+```javascript
+function callStack()
+{   
+    setBaseStats();
+    changeConeDesc(document.getElementById("cone-name").innerText);
+    changeCharaTalentDesc(document.getElementById("chara-name").innerText + document.getElementById("talent-level").value.toString());
+    changeCharaTraces(document.getElementById("chara-name").innerText);
+    checkSetBonus();
+    mainFormula('Ultimate'); 
+    mainFormula('BasicATK'); 
+    mainFormula('Skill')
+}
+```
+Karena yang diubah adalah level, function yang akan saya jelaskan lebih detail adalah setBaseStats() dan mainFormula(). setBaseStats merupakan salah satu function yang ada di calculateBaseStats.js yang digunakan untuk menghitung base stats (barisan input *disabled* sebelah flat stats di kolom tiga).
+```javascript
+function setBaseStats()
+{
+    var arr = baseStatsAll();
+    document.getElementById("base-attack").value = Math.round(arr[0][0]) + Math.round(arr[1][0]);
+    document.getElementById("base-defense").value = Math.round(arr[0][1]) + Math.round(arr[1][1]);
+    document.getElementById("base-crit-rate").value = 5;
+    document.getElementById("base-crit-dmg").value = 50;
+    document.getElementById("base-break-effect").value = 0;
+    document.getElementById("base-elemental-boost").value = 0;
+    document.getElementById("base-elemental-pen").value = 0;
+}
+function baseStatsAll()
+{   
+    var level = document.getElementById("chara-level").value;
+    var name = document.getElementById("chara-name").innerText;
+    
+    if(name == "March 7th")
+    {
+        name = "Mar7th";
+    }
+
+    baseStatsChara = getBaseStatsCharacter(level, name);
+    var coneLevel = document.getElementById("cone-level").value;
+    var coneName = document.getElementById("cone-name").innerText;
+    baseStatsCone = getBaseStatsCone(coneLevel, coneName);
+    return [baseStatsChara, baseStatsCone]
+}
+```
+setBaseStats() akan memanggil baseStatsAll() dan berdasarkan hasil tersebut akan menentukan nilai elemen-elemen html base stats. baseStatsAll() akan memanggil function getBaseStatsCharacter, yang dimana function itu adalah
+```javascript
+function getBaseStatsCharacter(characterLevel, characterName)
+{
+  /*
+    rest of the codes are omitted to make presentation shorter
+  */
+    $.ajax
+    ({
+        type:'POST',
+        url:'pureHopelessPain/getBaseChara.php',
+        async:false,
+        data:
+        {
+            level: characterLevel,
+            name: characterName,
+        },
+        dataType:'json',
+        success:function(base)
+        {   
+            var atkStats = parseFloat(base.base_atk) + (parseFloat(base.add_atk) * (ogLevel - 1 ));
+            var defStats = parseFloat(base.base_def) + (parseFloat(base.add_def) * (ogLevel - 1));
+            returnv = [atkStats, defStats]
+        }
+    });
+    return returnv;
+}
+```
+merupakan kode AJAX yang memanggil kode php getBaseChara dengan memberikan kedua data yaitu $level dan $name. 
+```php
+  <?php
+    session_start();
+    include 'connect.php';
+    $res = mysqli_fetch_assoc(mysqli_query($_SESSION['mysqli'], "SELECT * FROM character_base_stats_n_level WHERE character_stats_n_level_id = " . "'" . $_POST["name"] .     $_POST["level"] ."';" ));
+    echo json_encode(array(
+        "base_atk" => $res['base_stats_atk'],
+        "base_def" => $res['base_stats_def'],
+        "add_atk" => $res['atk_add_per_level'],
+        "add_def" => $res['def_add_per_level']
+    ));
+  ?>
+```
+getBaseChara memulai kodenya dengan session_start() untuk mengakses variabel session, yaitu mysqli, merupakan koneksi mysql yang dibuat dalam file connection.php. setelah itu menginclude connect.php, untuk membuka koneksi mysql lalu menjalankan kueri berdasarkan data yang dikirim getBaseStatsCharacter() dalam bentuk $_POST[]. Hasil kueri itu akan dikembalikan kepada getBaseCharacter() dalam bentuk JSON.
+```php
+<?php
+    session_start();
+    $servername = "p:localhost";
+    $username = "root";
+    $password = "";
+    $database = "hsr_calc_prj";
+
+    $_SESSION['mysqli'] = new mysqli($servername, $username, $password, $database);
+
+
+    if(!$_SESSION['mysqli'])
+    {
+        die("connection failed : ".mysqli_connect_error());
+    }
+?>
+```
+```php
+<?php
+    $_SESSION['mysqli'] -> connect("p:localhost", "root", "", "hsr_calc_prj");
+?>
+```
+Setelah setBaseStats() selanjutnya adalah function mainFormula()
+```javascript
+function mainFormula(skillType)
+{   
+    var outgoingDamage = baseDamage(skillType) * damageMultiplier() * defenseMultiplier() * resMultiplier() * dmgTakenMultiplier() *  universalDamageReduction();
+    var nonCrit = document.getElementById(skillType + "-res");
+    var crit = document.getElementById(skillType + "-res-crit");
+    nonCrit.value = Math.round(outgoingDamage);
+    var critdmg = parseInt(document.getElementById("base-crit-dmg").value) + parseInt(document.getElementById("flat-crit-dmg").value);
+    crit.value = Math.round(outgoingDamage * (1 + (critdmg)/100))
+}
+```
+yang merupakan representasi dari formula [SRL](https://srl.keqingmains.com/combat-mechanics/damage/damage-formula). Nilai yang telah dihitung akan ditampilkan dalam element html kolom ketiga, yang merupakan hasil dari direct feedback perubahan level karakter oleh pengguna.
+
+## Konten dinamis
+Jika pengguna mengganti seleksi karakter, light cone, ataupun mengganti relic set maka deskripsi yang keluar akan berbeda.
+
+![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/49e18851-20cd-4224-a9ef-1b17ada2b64a)
+![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/7951f8eb-9cff-47e7-abde-74cc81d02487)
