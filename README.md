@@ -25,12 +25,27 @@ yang mempengaruhi kalkukasi damage.
 
 
 Dalam kolom pertama terdapat menu karakter dan light cone, yang berisi informasi-informasi relevan terhadap karakter dan light cone yang user dapat 
-isi atau ubah. Untuk mengubah dari menu karakter menuju light cone, atau sebaliknya, dapat dilakukan dengan mengklik anchor element sesuai tujuan.
+isi atau ubah, seperti level kemampuan-kemampuan karakter dalam bentuk input. 
+Untuk mengubah dari menu karakter menuju light cone, atau sebaliknya, dapat dilakukan dengan mengklik anchor element sesuai tujuan.
 
-Dalam mengubah karakter maupun light cone, dapat mengklik gambarnya untuk membuka menu yang berisi seleksi-seleksi yang ada. Dengan mengklik salah satu dari
+Dalam mengubah karakter maupun light cone, dapat mengklik gambarnya untuk membuka menu (modal bootstrap) yang berisi seleksi-seleksi yang ada. Dengan mengklik salah satu dari
 seleksi, akan menggubah informasi-informasi relevan terhadap pilihan tersebut.
 
 ![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/b79890c0-29bf-4af5-9632-11b182fa1e47)
 ![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/d09aed1b-bad6-4a93-aca0-f494e5352abc)
 
-###
+### Equipment & Enemy
+
+![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/ef008b79-b358-431e-8b37-b5e631e2ba10)
+![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/af50d393-1f82-4de4-a25b-cad2aa26388f)
+
+Dalam kolom kedua, adalah menu equipment dan enemy. Menu equipment hampir mirip seperti menu karakter dan light cone dimana jika mengklik akan muncul menu beriisi seleksi-seleksi yang ada, dengan perbedaan jika memilih untuk mengambil satu set, maka akan merubah pilihan menjadi satu set baru. Sedangkan menu enemies adalah kumpulan-kumpulan debuff atau affliction yang musuh alami.
+
+![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/5c9c7c99-0a72-48d5-8ef7-2c4fa931523a)
+![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/760a452e-5959-4108-b45d-974c4fd25447)
+
+### Calculated Result
+![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/687afba7-8e94-4eea-92b8-7daef0dcb73f)
+
+Merupakan kolom ketiga dan terakhir yang berisi kumpulan input yang user isi, yang digunakan untuk menghitung damage berdasarkan formula yang tersedia di [SRL](https://srl.keqingmains.com/combat-mechanics/damage/damage-formula).
+Input yang user dapat isi adalah input yang tidak dalam bentuk *disabled*. Input-input yang dalam bentuk *disabled* dihitung otomatis berdasarkan formula yang ada.
