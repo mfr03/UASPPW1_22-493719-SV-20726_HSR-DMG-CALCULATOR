@@ -4,6 +4,11 @@
     background-color: rgba(0, 0, 0, 0.2);
 }
 
+.colorednav
+{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
 .carousel-item-start, .carousel-item-end
 {
     opacity: 0 !important;

@@ -6,14 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="codeistole.css">
+    <link rel="stylesheet" href="style2.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>paretto</title>
+    <title>hsr_calc_prj</title>
 </head>
 <?php include 'connection.php' ?>
 <body style="min-height: 100vh;" onload="callStack()">
+    <nav class="navbar navbar-expand-lg navbar-dark static-top colorednav">
+        <div class="container">
+            <a class="navbar-brand p-0 col-8" href="#">
+                HSR Damage Calculator
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">GitHub</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    More Information
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">hehe</a></li>
+                    <hr class="dropdown-divider">
+                    <li><a class="dropdown-item" href="#">ketauan</a></li>
+                    <li>
+                    <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">deh</a></li>
+                </ul>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container mt-5">
-        <div class="row">
+        <div class="row ">
             <div id="form-wrapper-selection-1" class="container col-sm-12 col-md-8 col-lg-7 col-xl-3 order-sm-1 order-2 mb-sm-4 mb-4">
                 <div class="row h-100">
                     <div id="selection_1" class="col-sm-12 order-1 h-100 rounded-3">
@@ -271,7 +305,7 @@
                                 <div class="col-6">
 								    <div class="card col-10 col-xl-12 bg-transparent border-0">
                                         <button type="button" class="btn p-0 mt-1 card-img-top" data-bs-toggle="modal" data-bs-target="#conesModal">
-                                            <img id="selected-cone" class="img-fluid" src="rsc/light-cones/21022.png" style="width:120px;">
+                                            <img id="selected-cone" class="img-fluid" src="rsc/light-cones/21022.png" style="width:96px;">
                                         </button>
                                         <div class="card-body text-center text-white">
                                             <p id="cone-name">Fermata</p>
@@ -279,6 +313,7 @@
 								    </div>
                                 </div>
                                 <div class="row">
+                                    <p class="fw-bolder">Light Cone Ability</p>
                                     <div id="cone-desc" class="col-12">
                                             <p>Increases the Break Effect dealt by the wearer by 16%, and increases their DMG to enemies afflicted with Shock or Wind Shear by 16%. This also applies to DoT.</p>
                                     </div>
@@ -290,7 +325,7 @@
             </div>
             <div id="form-wrapper-selection-2" class="container col-sm-12 col-md-8 col-lg-7 col-xl-3 order-sm-1 order-2 mb-sm-4 mb-4 ">
                 <div class="row h-100">
-                    <div id="selection_2" class="col-sm-12 order-2 h-100 rounded-3">
+                    <div id="selection_2" class="col-sm-12 order-2 h-100 rounded-3 mb-2">
                         <div class="d-flex flex-row justify-content-around mb-4 mt-2">
                             <a id="a1" class="bodge" data-bs-target="#carousel_selection_2" data-bs-slide-to="0" onclick="changeCarousel('a1')">Equipment</a> 
                             <a id="a2" data-bs-target="#carousel_selection_2" data-bs-slide-to="1" onclick="changeCarousel('a2')">Enemies</a>
@@ -298,7 +333,7 @@
                         <div id="carousel_selection_2" class="carousel slide carousel-fade">
                             <div class="carousel-item active fading">
                                 <div id="modal-buttons" class="row">
-                                    <div class="d-flex flex-row justify-content-between">
+                                    <div class="d-flex flex-row justify-content-around">
                                         <button type="button" class="btn p-0 mt-1" data-bs-toggle="modal" data-bs-target="#relicModalHead">
                                             <img  id="relic_head" class="img-fluid" src="rsc/relics_png/geniuss_head.png" width="92px">
                                         </button>
@@ -309,7 +344,7 @@
                                             <img id="relic_sphere" class="img-fluid" src="rsc/relics_png/hertas_sphere.png" width="92px">
                                         </button>
                                     </div>
-                                    <div class="d-flex flex-row justify-content-between">
+                                    <div class="d-flex flex-row justify-content-around">
                                         <button type="button" class="btn p-0 mt-1" data-bs-toggle="modal" data-bs-target="#relicModalBody">
                                             <img id="relic_body" class="img-fluid" src="rsc/relics_png/geniuss_body.png" width="92px">
                                         </button>
@@ -327,48 +362,55 @@
                                 </div>
                               </div>
                             <div class="carousel-item">
-                            <div class="d-sm-block d-flex justify-content-between mt-2">
-                                <!-- need to make this two radio button -->
+                                <div class="d-md-block d-flex justify-content-between mt-2 mb-2">
+                                        <div class="row col-12 form=group mt-1">
+                                            <div class="col-lg-3 col-2">
+                                                <input id="enemy-level" class="form-control form-select-sm" type="text" value="69">
+                                            </div>
+                                            <label class="col-5 col-sm-5 ml-auto" for="enemy-level">Enemy Level</label>
+                                     </div>
+                                </div>
+                                <p>Enemy Afflicted Debuff</p>
+                                <div class="d-sm-block d-flex justify-content-between mt-2">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" id="enemy_weak_to_element">
-                                        <label class="form-check-label" for="enemy_weak_to_element">weak to current element</label>
+                                        <label class="form-check-label" for="enemy_weak_to_element">Weak to current element</label>
                                     </div>
                                 </div>
                                 <div class="d-sm-block d-flex justify-content-between mt-2">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox"id="enemy_resist_to_element">
-                                        <label class="form-check-label" for="enemy_resist_to_element">resist to current element</label>
+                                        <label class="form-check-label" for="enemy_resist_to_element">Resist to current element</label>
                                     </div>
                                 </div>
-                                Afflicted Debuff
                                 <div class="d-sm-block d-flex justify-content-between mt-2">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" id="enemy_toughness_broken">
-                                        <label class="form-check-label" for="enemy_toughness_broken">toughness broken</label>
+                                        <label class="form-check-label" for="enemy_toughness_broken">Toughness broken</label>
                                     </div>
                                 </div>
                                 <div class="d-sm-block d-flex justify-content-between mt-2">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="bleed" id="enemy_debuff_bleed">
-                                        <label class="form-check-label" for="enemy_debuff_bleed">bleed</label>
+                                        <label class="form-check-label" for="enemy_debuff_bleed">Bleed</label>
                                     </div>
                                 </div>
                                 <div class="d-sm-block d-flex justify-content-between mt-2">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="burn" id="enemy_debuff_burn">
-                                        <label class="form-check-label" for="enemy_debuff_burn">burn</label>
+                                        <label class="form-check-label" for="enemy_debuff_burn">Burn</label>
                                     </div>
                                 </div>
                                 <div class="d-sm-block d-flex justify-content-between mt-2">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="frozen" id="enemy_debuff_frozen">
-                                        <label class="form-check-label" for="enemy_debuff_frozen">frozen</label>
+                                        <label class="form-check-label" for="enemy_debuff_frozen">Frozen</label>
                                     </div>
                                 </div>
                                 <div class="d-sm-block d-flex justify-content-between mt-2">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="shock" id="enemy_debuff_shock">
-                                        <label class="form-check-label" for="enemy_debuff_shock">shock</label>
+                                        <label class="form-check-label" for="enemy_debuff_shock">Shock</label>
                                     </div>
                                 </div>
                                 <div class="d-sm-block d-flex justify-content-between mt-2">
@@ -380,19 +422,13 @@
                                 <div class="d-sm-block d-flex justify-content-between mt-2">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="entanglement" id="enemy_debuff_entanglement">
-                                        <label class="form-check-label" for="enemy_debuff_entanglement">entanglement</label>
+                                        <label class="form-check-label" for="enemy_debuff_entanglement">Entanglement</label>
                                     </div>
                                 </div>
                                 <div class="d-sm-block d-flex justify-content-between mt-2">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="checkbox" value="imprisonment" id="enemy_debuff_imprisonment">
-                                        <label class="form-check-label" for="enemy_debuff_imprisonment">imprisonment</label>
-                                    </div>
-                                </div>
-                                <div class="d-md-block d-flex justify-content-between mt-2">
-                                    <div class="form-check form-check-inline">
-                                        <input id="enemy-level" class="h-25 w-25 form-check-input" type="text" value="69">
-                                        <label class="form-check-label" for="enemy-level">Enemy Level</label>
+                                        <label class="form-check-label" for="enemy_debuff_imprisonment">Imprisonment</label>
                                     </div>
                                 </div>
                             </div>
@@ -401,135 +437,134 @@
                 </div>
             </div>
             <div id="form-wrapper-input-output" class="container col-sm-12 col-md-8 col-lg-7 col-xl-5 row-cols-1 order-sm-2 order-3 mb-sm-4 mb-4 rounded-3">
-                <div id="form-input-stats" class="col-sm-12 row-cols-sm-1">
+                <div id="form-input-stats" class="col-sm-12 row-cols-sm-1 mt-2">
                     <div class="col-sm-12 row justify-content-end">
-                        <div class="col-3 text-center">
+                        <div class="col-4 text-center">
                             <p>Base</p>
                         </div>
-                        <div class="col-3 text-center">
+                        <div class="col-4 text-center">
                             <p>Flat</p>
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
-                        <div class="col-6 text-end">
+                        <div class="col-4 text-end">
                             <p>Attack</p>
                         </div>
-                        <div class="col-3 d-flex justify-content-end">
+                        <div class="col-4 d-flex justify-content-end">
                         <input disabled id="base-attack" type="num" class="container btn btn-dark">
                         </div>
-                        <div class="col-3 d-flex justify-content-end">
+                        <div class="col-4 d-flex justify-content-end">
                         <input id="flat-attack" type="num" class="container btn btn-dark" value="1378" onchange="callStack()">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
-                        <div class="col-6 text-end">
+                        <div class="col-4 text-end">
                             <p>Defense</p>
                         </div>
-                        <div class="col-3 d-flex justify-content-end">
+                        <div class="col-4 d-flex justify-content-end">
                         <input disabled id="base-defense" type="num" class="container btn btn-dark" value="648">
                         </div>
-                        <div class="col-3 d-flex justify-content-end">
+                        <div class="col-4 d-flex justify-content-end">
                         <input id="flat-defense" type="num" class="container btn btn-dark" value="71" onchange="callStack()">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
-                        <div class="col-6 text-end">
+                        <div class="col-4 text-end">
                             <p>Crit Rate %</p>
                         </div>
-                        <div class="col-3 d-flex justify-content-end">
+                        <div class="col-4 d-flex justify-content-end">
                         <input disabled id="base-crit-rate" type="num" class="container btn btn-dark">
                         </div>
-                        <div class="col-3 d-flex justify-content-end">
+                        <div class="col-4 d-flex justify-content-end">
                         <input id="flat-crit-rate" type="num" class="container btn btn-dark" value="61.5" onchange="callStack()">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
-                        <div class="col-6 text-end">
+                        <div class="col-4 text-end">
                             <p>Crit Damage</p>
                         </div>
-                        <div class="col-3 d-flex justify-content-end">
+                        <div class="col-4 d-flex justify-content-end">
                         <input disabled id="base-crit-dmg" type="num" class="container btn btn-dark">
                         </div>
-                        <div class="col-3 d-flex justify-content-end">
+                        <div class="col-4 d-flex justify-content-end">
                         <input id="flat-crit-dmg" type="num" class="container btn btn-dark" value="67,5" onchange="callStack()">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
-                        <div class="col-6 text-end">
+                        <div class="col-4 text-end">
                             <p>Break Effect %</p>
                         </div>
-                        <div class="col-3 d-flex justify-content-end">
+                        <div class="col-4 d-flex justify-content-end">
                         <input disabled id="base-break-effect" type="num" class="container btn btn-dark">
                         </div>
-                        <div class="col-3 d-flex justify-content-end">
+                        <div class="col-4 d-flex justify-content-end">
                         <input id="flat-break-effect" type="num" class="container btn btn-dark" value="11" onchange="callStack()">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
-                        <div class="col-6 text-end">
+                        <div class="col-4 text-end">
                             <p>Elemental Damage Boost</p>
                         </div>
-                        <div class="col-3 d-flex justify-content-end">
+                        <div class="col-4 d-flex justify-content-end">
                             <input disabled id="base-elemental-boost" type="num" class="container btn btn-dark">
                         </div>
-                        <div class="col-3 d-flex justify-content-end">
+                        <div class="col-4 d-flex justify-content-end">
                             <input id="flat-elemental-boost" type="num" class="container btn btn-dark" value="48,8" onchange="callStack()">
                         </div>
                     </div>
                     <div class="col-sm-12 row justify-content-end mb-3">
-                        <div class="col-6 text-end">
+                        <div class="col-4 text-end">
                             <p>Elemental Penetration %</p>
                         </div>
-                        <div class="col-3 d-flex justify-content-end">
+                        <div class="col-4 d-flex justify-content-end">
                             <input disabled id="base-elemental-pen" type="num" class="container btn btn-dark" value="0">
                         </div>
-                        <div class="col-3 d-flex justify-content-end">
+                        <div class="col-4 d-flex justify-content-end">
                             <input id="flat-elemental-pen" type="num" class="container btn btn-dark" value="0" onchange="callStack()">
                         </div>
                     </div>
                 </div>
                 <div id="form-output-damages" class="col-sm-12 mt-4">
                     <div class="col-12 row justify-content-end pt-2">
-                        
-                        <div class="col-3 text-center">
+                        <div class="col-4 text-center">
                             <p>Normal</p>
                         </div>
-                        <div class="col-3 text-center">
+                        <div class="col-4 text-center">
                             <p>Crit</p>
                         </div>
-                        </div>
+                    </div>
                     </div>
                     <div class="col-12 row justify-content-end mb-3">
-                        <div class="col-3 text-end">
+                        <div class="col-4 text-end">
                             Normal Attack
                         </div>
                         <div class="col-4 d-flex justify-content-end">
-                            <input id="BasicATK-res" type="num" class="container btn btn-dark">
+                            <input disabled id="BasicATK-res" type="num" class="container btn btn-dark">
                         </div>
                         <div class="col-4 d-flex justify-content-end">
-                            <input id="BasicATK-res-crit" type="num" class="container btn btn-dark">
+                            <input disabled  id="BasicATK-res-crit" type="num" class="container btn btn-dark">
                         </div>
                     </div>
                     <div class="col-12 row justify-content-end mb-3">
-                        <div class="col-3 text-end">
+                        <div class="col-4 text-end">
                             Skill 1
                         </div>
                         <div class="col-4 d-flex justify-content-end">
-                            <input id="Skill-res" type="num" class="container btn btn-dark">
+                            <input disabled  id="Skill-res" type="num" class="container btn btn-dark">
                         </div>
                         <div class="col-4 d-flex justify-content-end">
-                            <input id="Skill-res-crit" type="num" class="container btn btn-dark">
+                            <input disabled  id="Skill-res-crit" type="num" class="container btn btn-dark">
                         </div>
                     </div>
                     <div class="col-12 row justify-content-end mb-3">
-                        <div class="col-3 text-end">
+                        <div class="col-4 text-end">
                             Ultimate
                         </div>
                         <div class="col-4 d-flex justify-content-end">
-                            <input id="Ultimate-res" type="num" class="container btn btn-dark">
+                            <input disabled  id="Ultimate-res" type="num" class="container btn btn-dark">
                         </div>
                         <div class="col-4 d-flex justify-content-end">
-                            <input id="Ultimate-res-crit" type="num" class="container btn btn-dark">
+                            <input disabled  id="Ultimate-res-crit" type="num" class="container btn btn-dark">
                         </div>
                     </div>
                 </div>
@@ -784,8 +819,7 @@
                             </div>
                         </div>
                     </div>
-            </div>
-           
+            </div> 
             <div class="modal fade" id="relicModalHead" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -963,9 +997,6 @@
     </div>
 </body>
     <script src="js/bootstrap.bundle.js"></script>
-    <script>
-        document.getElementById("dkott").focus()
-    </script>
     <script src="queryToDB.js"></script>
     <script src="charactersAndLightCones.js"></script>
     <script src="characterTraces.js"></script>
