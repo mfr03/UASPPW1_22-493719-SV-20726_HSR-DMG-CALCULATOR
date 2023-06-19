@@ -150,7 +150,7 @@ function getBaseStatsCharacter(characterLevel, characterName)
 ```
 merupakan kode AJAX yang memanggil kode php getBaseChara dengan memberikan kedua data yaitu $level dan $name. 
 ```php
-  <?php
+<?php
     session_start();
     include 'connect.php';
     $res = mysqli_fetch_assoc(mysqli_query($_SESSION['mysqli'], "SELECT * FROM character_base_stats_n_level WHERE character_stats_n_level_id = " . "'" . $_POST["name"] .     $_POST["level"] ."';" ));
@@ -160,7 +160,7 @@ merupakan kode AJAX yang memanggil kode php getBaseChara dengan memberikan kedua
         "add_atk" => $res['atk_add_per_level'],
         "add_def" => $res['def_add_per_level']
     ));
-  ?>
+?>
 ```
 getBaseChara memulai kodenya dengan session_start() untuk mengakses variabel session, yaitu mysqli, merupakan koneksi mysql yang dibuat dalam file connection.php. setelah itu menginclude connect.php, untuk membuka koneksi mysql lalu menjalankan kueri berdasarkan data yang dikirim getBaseStatsCharacter() dalam bentuk $_POST[]. Hasil kueri itu akan dikembalikan kepada getBaseCharacter() dalam bentuk JSON.
 ```php
@@ -204,3 +204,14 @@ Jika pengguna mengganti seleksi karakter, light cone, ataupun mengganti relic se
 
 ![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/49e18851-20cd-4224-a9ef-1b17ada2b64a)
 ![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/7951f8eb-9cff-47e7-abde-74cc81d02487)
+
+Prosesnya hampir mirip seperti yang ada di bagian direct feedback, hanya saja menggunakan file php getCharaTalentDesc, getConeDesc, getRelicDesc pada masing-masing konten yang akan diambil dari database. Berikut salah satu file phpnya.
+```php
+<?php
+    session_start();
+    include 'connect.php';
+    $res = mysqli_fetch_assoc(mysqli_query($_SESSION['mysqli'], "SELECT * FROM character_talent WHERE character_talent_id = " . "'" . $_POST["name"] ."';" ));
+    
+    echo $res['talent_desc'];
+?>
+```
