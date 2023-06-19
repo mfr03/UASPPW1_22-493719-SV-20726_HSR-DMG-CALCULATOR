@@ -52,7 +52,17 @@ Input yang user dapat isi adalah input yang tidak dalam bentuk *disabled*. Input
 
 
 ## Responsive
-Web ini responsive, dengan semakin pendek lebar layar maka kolom akan tersusun atas-kebawah, sedang dimana laptop tersusun kiri-kanan
+Web ini responsive, dengan semakin pendek lebar layar maka kolom akan tersusun atas-kebawah, sedang dimana laptop tersusun kiri-kanan.
+Dalam singkatnya, berikutlah kode yang bertugas untuk membuat halaman responsive.
+```html
+<div class="container mt-5">
+    <div class="row">
+        <div id="form-wrapper-selection-1" class="container col-sm-12 col-md-8 col-lg-7 col-xl-3 order-sm-1 order-2 mb-sm-4 mb-4"></div>
+        <div id="form-wrapper-selection-2" class="container col-sm-12 col-md-8 col-lg-7 col-xl-3 order-sm-1 order-2 mb-sm-4 mb-4 "></div>
+        <div id="form-wrapper-input-output" class="container col-sm-12 col-md-8 col-lg-7 col-xl-5 row-cols-1 order-sm-2 order-3 mb-sm-4 mb-4 rounded-3"></div>
+    </div>
+</div>
+```
 ### Desktop / Laptop (width 1920px)
 ![screencapture-localhost-hsr-calc-prj-2023-06-19-21_23_48](https://github.com/mfr03/ProyekWeb1/assets/108723167/e93f1043-d1d8-4d6e-ae78-ee48075098cc)
 ### Tablet (width 768px)
