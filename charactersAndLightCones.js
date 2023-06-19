@@ -157,15 +157,18 @@ function checkSetBonus()
 
 function giveSetBonus(two, four, twoSR)
 {
-    var setBonus = document.getElementById("set_bonuses");
-    setBonus.innerHTML = "";
+    var cavernBonus = document.getElementById("cavern_relics");
+    var planarBonus = document.getElementById("planar_relics");
+    cavernBonus.innerHTML = "";
+    planarBonus.innerHTML ="";
     var getBonus;
     if(two.length != 0 && four == '') 
     {   
+        cavernBonus.innerHTML += "<p class='fw-bolder'>" + "Cavern Relics Set Bonus" +"</p>"
         for(var i = 0; i < two.length; i++)
         {
             getBonus = getRelicDesc(two[i]);
-            setBonus.innerHTML += "<p>" + getBonus[0] + "</p>";
+            cavernBonus.innerHTML += "<p>" + getBonus[0] + "</p>";
         }
         
     }
@@ -173,14 +176,16 @@ function giveSetBonus(two, four, twoSR)
     if(four != '')
     {   
         getBonus = getRelicDesc(four);
-        setBonus.innerHTML += "<p>" + getBonus[0] + "</p>";
-        setBonus.innerHTML += "<p>" + getBonus[1] + "</p>";
+        cavernBonus.innerHTML += "<p class='fw-bolder'>" + "Cavern Relics Set Bonus" +"</p>"
+        cavernBonus.innerHTML += "<p>" + getBonus[0] + "</p>";
+        cavernBonus.innerHTML += "<p>" + getBonus[1] + "</p>";
     }
 
     if(twoSR != '')
     {
         getBonus = getRelicDesc(twoSR);
-        setBonus.innerHTML += "<p>" + getBonus[0] + "</p>";
+        cavernBonus.innerHTML += "<p class='fw-bolder'>" + "Planar Ornaments Set Bonus" +"</p>"
+        planarBonus.innerHTML += "<p>" + getBonus[0] + "</p>";
     }
 }
 
@@ -228,6 +233,8 @@ function changeSelection(changeTo)
         if(isElementVisible(characterSelection))
         {   
             characterSelection.classList.add("d-none");
+            document.getElementById("ultrabodge").classList.remove("bodge");
+            document.getElementById("ultrabodge2").classList.add("bodge");
             lightConeSelection.classList.remove("d-none");
         } 
     }
@@ -236,6 +243,8 @@ function changeSelection(changeTo)
         if(isElementVisible(lightConeSelection))
         {
             characterSelection.classList.remove('d-none');
+            document.getElementById("ultrabodge").classList.add("bodge");
+            document.getElementById("ultrabodge2").classList.remove("bodge");
             lightConeSelection.classList.add('d-none');
         }
     }
@@ -356,4 +365,19 @@ function ultraBodge(file)
         default:
             break;
     }
+}
+
+function changeCarousel(param)
+{
+    if(param == "a2")
+    {   
+        document.getElementById("a1").classList.remove("bodge");
+        document.getElementById("a2").classList.add("bodge");
+    }
+    else if (param == "a1")
+    {
+        document.getElementById("a2").classList.remove("bodge");
+        document.getElementById("a1").classList.add("bodge");
+    }
+
 }

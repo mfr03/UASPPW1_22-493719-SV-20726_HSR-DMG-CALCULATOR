@@ -18,9 +18,9 @@
                 <div class="row h-100">
                     <div id="selection_1" class="col-sm-12 order-1 h-100 rounded-3">
                         <div class="col-sm-12 d-flex flex-column">
-                            <div>
-                                <a class="" onclick="changeSelection('character')">Characters</a>
-                                <a class="d-inline" onclick="changeSelection('cone')">Light Cones</a>
+                            <div class="d-flex flex-row justify-content-around mb-4 mt-2">
+                                <a id="ultrabodge" class="d-inline bodge" onclick="changeSelection('character')">Characters</a>
+                                <a id="ultrabodge2" class="d-inline" onclick="changeSelection('cone')">Light Cones</a>
                             </div>
                             <div id="selection-characters">
                                 <div id="selection-character" class="row mt-1">
@@ -77,11 +77,11 @@
                                         </div>
                                     </div>
                                     <div class="col-5">
-                                        <div class="card col-10 col-xl-12">
+                                        <div class="card col-10 col-xl-12 bg-transparent border-0">
                                             <button type="button" class="btn p-0 mt-1 card-img-top" data-bs-toggle="modal" data-bs-target="#charactersModal">
                                             <img id="selected-image" class="img-fluid" src="rsc/characters/seele.png" width="96px" style="">
                                             </button>
-                                            <div class="card-body text-center">
+                                            <div class="card-body text-center text-white">
                                                 <p id="chara-name">Seele</p>
                                             </div>
                                         </div>
@@ -253,246 +253,37 @@
                             </div>
                         </div>
                         <div id="selection-cones" class="col-sm-12 d-none">
-                            <p id="cone-name">Fermata</p>
                             <div class="row">
-                                <div class="col-7 mt-1">
-                                    <div class="d-flex justify-content-between">
-                                        <label class="col-form-label-sm" for="skills-1">Cone level</label>
-                                        <input id="cone-level" type="text" class="form-control-sm" value="80" onchange="callStack()">
+                                <div class="col-6 col-sm-6 mt-1">
+                                    <div class="row col-12 form=group mt-1">
+                                        <label class="col-5 col-sm-5 col-form-label col-form-label-sm" for="cone-level">Level</label>
+                                        <div class="col-7 col-sm-5 col-lg-7 col-md-5">
+                                            <input id="cone-level" type="text" class="form-control form-control-sm" value="80" onchange="callStack()">
+                                        </div>
                                     </div>
-                                    <div class="d-flex justify-content-between">
-                                        <label class="col-form-label-sm" for="skills-1">Superimposition</label>
-                                        <input id="superimposition" type="number" class="form-control-sm" value="1" onchange="callStack()">
-                                    </div>
-                                    <div class="form-check mt-1">
-                                        <input class="form-check-input" type="checkbox" value="traces6" id="cTraces6">
-                                        <label class="form-check-label" for="cTraces5">Allow incompatible cones</label>
+                                    <div class="row col-12 form=group mt-1">
+                                        <label class="col-5 col-sm-5 col-form-label col-form-label-sm" for="superimposition">Super imposition</label>
+                                        <div class="col-7 col-sm-5 col-lg-7 col-md-5">
+                                            <input id="superimposition" type="number" class="form-control form-control-sm" value="1" max="5" min="1" onchange="callStack()">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-5">
-                                    <button type="button" class="btn p-0 mt-1" data-bs-toggle="modal" data-bs-target="#conesModal">
-                                        <img id="selected-cone" class="img-fluid" src="rsc/light-cones/21022.png" style="width:120px;">
-                                    </button>
-
+                                <div class="col-6">
+								    <div class="card col-10 col-xl-12 bg-transparent border-0">
+                                        <button type="button" class="btn p-0 mt-1 card-img-top" data-bs-toggle="modal" data-bs-target="#conesModal">
+                                            <img id="selected-cone" class="img-fluid" src="rsc/light-cones/21022.png" style="width:120px;">
+                                        </button>
+                                        <div class="card-body text-center text-white">
+                                            <p id="cone-name">Fermata</p>
+                                        </div>
+								    </div>
                                 </div>
                                 <div class="row">
                                     <div id="cone-desc" class="col-12">
                                             <p>Increases the Break Effect dealt by the wearer by 16%, and increases their DMG to enemies afflicted with Shock or Wind Shear by 16%. This also applies to DoT.</p>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="conesModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <p class="modal-title fw-bold">Cone Selections</p>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!-- dont have 20000 picture lol -->
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20001');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20001.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20002');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20002.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20003');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20003.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20004');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20004.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20005');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20005.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20006');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20006.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20007');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20007.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20008');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20008.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20009');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20009.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20010');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20010.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20011');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20011.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20012');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20012.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20013');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20013.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20014');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20014.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20015');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20015.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20016');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20016.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20017');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20017.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20018');  callStack())">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20018.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20019');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20019.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20020');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20020.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21000');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21000.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21001');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21001.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21002');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21002.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21003');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21003.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21004');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21004.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21005');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21005.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21006');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21006.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21007');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21007.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21008');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21008.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21009');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21009.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21010');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21010.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21011');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21011.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21012');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21012.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21013');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21013.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21014');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21014.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21015');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21015.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21016');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21016.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21017');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21017.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21018');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21018.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21019');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21019.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21020');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21020.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21021');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21021.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21022');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21022.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21023');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21023.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21024');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21024.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21025');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21025.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21026');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21026.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21027');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21027.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21028');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21028.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21029');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21029.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21030');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21030.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21031');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21031.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21032');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21032.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21033';  callStack())">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21033.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21034');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21034.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23000');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23000.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23001');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23001.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23002');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23002.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23003');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23003.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23004');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23004.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23005');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23005.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23010');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23010.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23012');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23012.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('24000');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/24000.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('24001');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/24001.png" width="64px">
-                                                </button>
-                                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('24002');  callStack()">
-                                                    <img class="img-fluid rounded-2" src="rsc/light-cones/24002.png" width="64px">
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                             </div>
                         </div>
                     </div>
                 </div>
@@ -500,12 +291,12 @@
             <div id="form-wrapper-selection-2" class="container col-sm-12 col-md-8 col-lg-7 col-xl-3 order-sm-1 order-2 mb-sm-4 mb-4 ">
                 <div class="row h-100">
                     <div id="selection_2" class="col-sm-12 order-2 h-100 rounded-3">
-                        <div class="d-flex flex-row justify-content-between">
-                            <a data-bs-target="#carousel_selection_2" data-bs-slide-to="0">Equipment</a> 
-                            <a data-bs-target="#carousel_selection_2" data-bs-slide-to="1">Enemies</a>
+                        <div class="d-flex flex-row justify-content-around mb-4 mt-2">
+                            <a id="a1" class="bodge" data-bs-target="#carousel_selection_2" data-bs-slide-to="0" onclick="changeCarousel('a1')">Equipment</a> 
+                            <a id="a2" data-bs-target="#carousel_selection_2" data-bs-slide-to="1" onclick="changeCarousel('a2')">Enemies</a>
                         </div>
-                        <div id="carousel_selection_2" class="carousel slide">
-                            <div class="carousel-item active">
+                        <div id="carousel_selection_2" class="carousel slide carousel-fade">
+                            <div class="carousel-item active fading">
                                 <div id="modal-buttons" class="row">
                                     <div class="d-flex flex-row justify-content-between">
                                         <button type="button" class="btn p-0 mt-1" data-bs-toggle="modal" data-bs-target="#relicModalHead">
@@ -530,182 +321,9 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div>
-                                    <div class="modal fade" id="relicModalHead" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchHead">
-                                                        <label class="form-check-label fw-bold" for="chooseSetSwitchHead">Select Relic Set</label>
-                                                    </div>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <button type="button" class="btn" data-bs-dismiss="modal">
-                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/bands_head.png" width="64px" onclick="changeRelic('bands', 'head')">
-                                                    </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/champions_head.png" width="64px" onclick="changeRelic('champions', 'head')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/eagles_head.png" width="64px" onclick="changeRelic('eagles', 'head')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/firesmiths_head.png" width="64px" onclick="changeRelic('firesmiths', 'head')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/geniuss_head.png" width="64px" onclick="changeRelic('geniuss', 'head')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/guards_head.png" width="64px" onclick="changeRelic('guards', 'head')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/hunters_head.png" width="64px" onclick="changeRelic('hunters', 'head')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/knights_head.png" width="64px" onclick="changeRelic('knights', 'head')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/musketeers_head.png" width="64px" onclick="changeRelic('musketeers', 'head')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/passerbys_head.png" width="64px" onclick="changeRelic('passerbys', 'head')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/thiefs_head.png" width="64px" onclick="changeRelic('thiefs', 'head')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/wastelanders_head.png" width="64px" onclick="changeRelic('wastelanders', 'head')"></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal fade" id="relicModalBody" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchBody">
-                                                        <label class="form-check-label fw-bold" for="chooseSetSwitchBody">Select Relic Set</label>
-                                                    </div>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <button type="button" class="btn" data-bs-dismiss="modal">
-                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/bands_body.png" width="64px" onclick="changeRelic('bands', 'body')">
-                                                    </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/champions_body.png" width="64px" onclick="changeRelic('champions', 'body')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/eagles_body.png" width="64px" onclick="changeRelic('eagles', 'body')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/firesmiths_body.png" width="64px" onclick="changeRelic('firesmiths', 'body')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/geniuss_body.png" width="64px" onclick="changeRelic('geniuss', 'body')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/guards_body.png" width="64px" onclick="changeRelic('guards', 'body')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/hunters_body.png" width="64px" onclick="changeRelic('hunters', 'body')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/knights_body.png" width="64px" onclick="changeRelic('knights', 'body')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/musketeers_body.png" width="64px" onclick="changeRelic('musketeers', 'body')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/passerbys_body.png" width="64px" onclick="changeRelic('passerbys', 'body')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/thiefs_body.png" width="64px" onclick="changeRelic('thiefs', 'body')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/wastelanders_body.png" width="64px" onclick="changeRelic('wastelanders', 'body')"></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal fade" id="relicModalHands" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchHands">
-                                                        <label class="form-check-label fw-bold" for="chooseSetSwitchHands">Select Relic Set</label>
-                                                    </div>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <button type="button" class="btn" data-bs-dismiss="modal">
-                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/bands_hands.png" width="64px" onclick="changeRelic('bands', 'hands')">
-                                                    </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/champions_hands.png" width="64px" onclick="changeRelic('champions', 'hands')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/eagles_hands.png" width="64px" onclick="changeRelic('eagles', 'hands')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/firesmiths_hands.png" width="64px" onclick="changeRelic('firesmiths', 'hands')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/geniuss_hands.png" width="64px" onclick="changeRelic('geniuss', 'hands')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/guards_hands.png" width="64px" onclick="changeRelic('guards', 'hands')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/hunters_hands.png" width="64px" onclick="changeRelic('hunters', 'hands')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/knights_hands.png" width="64px" onclick="changeRelic('knights', 'hands')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/musketeers_hands.png" width="64px" onclick="changeRelic('musketeers', 'hands')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/passerbys_hands.png" width="64px" onclick="changeRelic('passerbys', 'hands')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/thiefs_hands.png" width="64px" onclick="changeRelic('thiefs', 'hands')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/wastelanders_hands.png" width="64px" onclick="changeRelic('wastelanders', 'hands')"></button>                                         
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal fade" id="relicModalFeet" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchFeet">
-                                                        <label class="form-check-label fw-bold" for="chooseSetSwitchHands">Select Relic Set</label>
-                                                    </div>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <button type="button" class="btn" data-bs-dismiss="modal">
-                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/bands_feet.png" width="64px" onclick="changeRelic('bands', 'feet')">
-                                                    </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/champions_feet.png" width="64px" onclick="changeRelic('champions', 'feet')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/eagles_feet.png" width="64px" onclick="changeRelic('eagles', 'feet')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/firesmiths_feet.png" width="64px" onclick="changeRelic('firesmiths', 'feet')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/geniuss_feet.png" width="64px" onclick="changeRelic('geniuss', 'feet')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/guards_feet.png" width="64px" onclick="changeRelic('guards', 'feet')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/hunters_feet.png" width="64px" onclick="changeRelic('hunters', 'feet')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/knights_feet.png" width="64px" onclick="changeRelic('knights', 'feet')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/musketeers_feet.png" width="64px" onclick="changeRelic('musketeers', 'feet')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/passerbys_feet.png" width="64px" onclick="changeRelic('passerbys', 'feet')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/thiefs_feet.png" width="64px" onclick="changeRelic('thiefs', 'feet')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/wastelanders_feet.png" width="64px" onclick="changeRelic('wastelanders', 'feet')"></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal fade" id="relicModalSphere" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchSphere">
-                                                        <label class="form-check-label fw-bold" for="chooseSetSwitchSphere">Select Relic Set</label>
-                                                    </div>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <button type="button" class="btn" data-bs-dismiss="modal">
-                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/hertas_sphere.png" width="64px" onclick="changeRelic('hertas', 'sphere')">
-                                                    </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal">
-                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/belobogs_sphere.png" width="64px" onclick="changeRelic('belobogs', 'sphere')">
-                                                    </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/ipcs_sphere.png" width="64px" onclick="changeRelic('ipcs', 'sphere')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/planet_sphere.png" width="64px" onclick="changeRelic('planet', 'sphere')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/salsottos_sphere.png" width="64px" onclick="changeRelic('salsottos', 'sphere')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/talias_sphere.png" width="64px" onclick="changeRelic('talias', 'sphere')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/vonwacqs_sphere.png" width="64px" onclick="changeRelic('vonwacqs', 'sphere')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/xianzhou_sphere.png" width="64px" onclick="changeRelic('xianzhou', 'sphere')"></button>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal fade" id="relicModalRope" tabindex="-1">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchRope">
-                                                        <label class="form-check-label fw-bold" for="chooseSetSwitchRope">Select Relic Set</label>
-                                                    </div>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <button type="button" class="btn" data-bs-dismiss="modal">
-                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/hertas_rope.png" width="64px" onclick="changeRelic('hertas', 'rope')">
-                                                    </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal">
-                                                        <img class="img-fluid rounded-2" src="rsc/relics_png/belobogs_rope.png" width="64px" onclick="changeRelic('belobogs', 'rope')">
-                                                    </button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/ipcs_rope.png" width="64px" onclick="changeRelic('ipcs', 'rope')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/planet_rope.png" width="64px" onclick="changeRelic('planet', 'rope')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/salsottos_rope.png" width="64px" onclick="changeRelic('salsottos', 'rope')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/talias_rope.png" width="64px" onclick="changeRelic('talias', 'rope')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/vonwacqs_rope.png" width="64px" onclick="changeRelic('vonwacqs', 'rope')"></button>
-                                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/xianzhou_rope.png" width="64px" onclick="changeRelic('xianzhou', 'rope')"></button>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div id="set_bonuses">
-                                    
+                                    <div id="cavern_relics"></div>
+                                    <div id="planar_relics"></div>
                                 </div>
                               </div>
                             <div class="carousel-item">
@@ -954,10 +572,400 @@
                     </div>
                 </div>
             </div>
+        
+            <div class="modal fade" id="conesModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <p class="modal-title fw-bold">Cone Selections</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- dont have 20000 picture lol -->
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20001');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20001.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20002');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20002.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20003');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20003.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20004');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20004.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20005');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20005.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20006');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20006.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20007');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20007.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20008');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20008.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20009');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20009.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20010');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20010.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20011');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20011.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20012');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20012.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20013');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20013.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20014');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20014.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20015');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20015.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20016');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20016.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20017');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20017.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20018');  callStack())">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20018.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20019');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20019.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('20020');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/20020.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21000');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21000.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21001');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21001.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21002');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21002.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21003');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21003.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21004');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21004.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21005');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21005.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21006');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21006.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21007');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21007.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21008');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21008.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21009');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21009.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21010');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21010.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21011');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21011.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21012');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21012.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21013');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21013.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21014');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21014.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21015');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21015.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21016');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21016.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21017');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21017.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21018');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21018.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21019');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21019.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21020');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21020.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21021');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21021.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21022');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21022.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21023');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21023.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21024');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21024.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21025');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21025.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21026');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21026.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21027');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21027.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21028');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21028.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21029');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21029.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21030');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21030.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21031');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21031.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21032');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21032.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21033';  callStack())">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21033.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('21034');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/21034.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23000');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23000.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23001');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23001.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23002');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23002.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23003');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23003.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23004');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23004.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23005');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23005.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23010');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23010.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('23012');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/23012.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('24000');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/24000.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('24001');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/24001.png" width="64px">
+                                </button>
+                                <button type="button" class="btn" data-bs-dismiss="modal" onclick="changeCone('24002');  callStack()">
+                                    <img class="img-fluid rounded-2" src="rsc/light-cones/24002.png" width="64px">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+           
+            <div class="modal fade" id="relicModalHead" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchHead">
+                                <label class="form-check-label fw-bold" for="chooseSetSwitchHead">Select Relic Set</label>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <button type="button" class="btn" data-bs-dismiss="modal">
+                                <img class="img-fluid rounded-2" src="rsc/relics_png/bands_head.png" width="64px" onclick="changeRelic('bands', 'head')">
+                            </button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/champions_head.png" width="64px" onclick="changeRelic('champions', 'head')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/eagles_head.png" width="64px" onclick="changeRelic('eagles', 'head')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/firesmiths_head.png" width="64px" onclick="changeRelic('firesmiths', 'head')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/geniuss_head.png" width="64px" onclick="changeRelic('geniuss', 'head')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/guards_head.png" width="64px" onclick="changeRelic('guards', 'head')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/hunters_head.png" width="64px" onclick="changeRelic('hunters', 'head')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/knights_head.png" width="64px" onclick="changeRelic('knights', 'head')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/musketeers_head.png" width="64px" onclick="changeRelic('musketeers', 'head')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/passerbys_head.png" width="64px" onclick="changeRelic('passerbys', 'head')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/thiefs_head.png" width="64px" onclick="changeRelic('thiefs', 'head')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/wastelanders_head.png" width="64px" onclick="changeRelic('wastelanders', 'head')"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="relicModalBody" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchBody">
+                                <label class="form-check-label fw-bold" for="chooseSetSwitchBody">Select Relic Set</label>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <button type="button" class="btn" data-bs-dismiss="modal">
+                                <img class="img-fluid rounded-2" src="rsc/relics_png/bands_body.png" width="64px" onclick="changeRelic('bands', 'body')">
+                            </button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/champions_body.png" width="64px" onclick="changeRelic('champions', 'body')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/eagles_body.png" width="64px" onclick="changeRelic('eagles', 'body')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/firesmiths_body.png" width="64px" onclick="changeRelic('firesmiths', 'body')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/geniuss_body.png" width="64px" onclick="changeRelic('geniuss', 'body')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/guards_body.png" width="64px" onclick="changeRelic('guards', 'body')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/hunters_body.png" width="64px" onclick="changeRelic('hunters', 'body')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/knights_body.png" width="64px" onclick="changeRelic('knights', 'body')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/musketeers_body.png" width="64px" onclick="changeRelic('musketeers', 'body')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/passerbys_body.png" width="64px" onclick="changeRelic('passerbys', 'body')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/thiefs_body.png" width="64px" onclick="changeRelic('thiefs', 'body')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/wastelanders_body.png" width="64px" onclick="changeRelic('wastelanders', 'body')"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="relicModalHands" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchHands">
+                                <label class="form-check-label fw-bold" for="chooseSetSwitchHands">Select Relic Set</label>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <button type="button" class="btn" data-bs-dismiss="modal">
+                                <img class="img-fluid rounded-2" src="rsc/relics_png/bands_hands.png" width="64px" onclick="changeRelic('bands', 'hands')">
+                            </button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/champions_hands.png" width="64px" onclick="changeRelic('champions', 'hands')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/eagles_hands.png" width="64px" onclick="changeRelic('eagles', 'hands')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/firesmiths_hands.png" width="64px" onclick="changeRelic('firesmiths', 'hands')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/geniuss_hands.png" width="64px" onclick="changeRelic('geniuss', 'hands')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/guards_hands.png" width="64px" onclick="changeRelic('guards', 'hands')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/hunters_hands.png" width="64px" onclick="changeRelic('hunters', 'hands')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/knights_hands.png" width="64px" onclick="changeRelic('knights', 'hands')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/musketeers_hands.png" width="64px" onclick="changeRelic('musketeers', 'hands')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/passerbys_hands.png" width="64px" onclick="changeRelic('passerbys', 'hands')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/thiefs_hands.png" width="64px" onclick="changeRelic('thiefs', 'hands')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/wastelanders_hands.png" width="64px" onclick="changeRelic('wastelanders', 'hands')"></button>                                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="relicModalFeet" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchFeet">
+                                <label class="form-check-label fw-bold" for="chooseSetSwitchHands">Select Relic Set</label>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <button type="button" class="btn" data-bs-dismiss="modal">
+                                <img class="img-fluid rounded-2" src="rsc/relics_png/bands_feet.png" width="64px" onclick="changeRelic('bands', 'feet')">
+                            </button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/champions_feet.png" width="64px" onclick="changeRelic('champions', 'feet')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/eagles_feet.png" width="64px" onclick="changeRelic('eagles', 'feet')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/firesmiths_feet.png" width="64px" onclick="changeRelic('firesmiths', 'feet')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/geniuss_feet.png" width="64px" onclick="changeRelic('geniuss', 'feet')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/guards_feet.png" width="64px" onclick="changeRelic('guards', 'feet')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/hunters_feet.png" width="64px" onclick="changeRelic('hunters', 'feet')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/knights_feet.png" width="64px" onclick="changeRelic('knights', 'feet')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/musketeers_feet.png" width="64px" onclick="changeRelic('musketeers', 'feet')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/passerbys_feet.png" width="64px" onclick="changeRelic('passerbys', 'feet')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/thiefs_feet.png" width="64px" onclick="changeRelic('thiefs', 'feet')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/wastelanders_feet.png" width="64px" onclick="changeRelic('wastelanders', 'feet')"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="relicModalSphere" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchSphere">
+                                <label class="form-check-label fw-bold" for="chooseSetSwitchSphere">Select Relic Set</label>
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <button type="button" class="btn" data-bs-dismiss="modal">
+                                <img class="img-fluid rounded-2" src="rsc/relics_png/hertas_sphere.png" width="64px" onclick="changeRelic('hertas', 'sphere')">
+                            </button>
+                            <button type="button" class="btn" data-bs-dismiss="modal">
+                                <img class="img-fluid rounded-2" src="rsc/relics_png/belobogs_sphere.png" width="64px" onclick="changeRelic('belobogs', 'sphere')">
+                            </button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/ipcs_sphere.png" width="64px" onclick="changeRelic('ipcs', 'sphere')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/planet_sphere.png" width="64px" onclick="changeRelic('planet', 'sphere')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/salsottos_sphere.png" width="64px" onclick="changeRelic('salsottos', 'sphere')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/talias_sphere.png" width="64px" onclick="changeRelic('talias', 'sphere')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/vonwacqs_sphere.png" width="64px" onclick="changeRelic('vonwacqs', 'sphere')"></button>
+                            <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/xianzhou_sphere.png" width="64px" onclick="changeRelic('xianzhou', 'sphere')"></button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="relicModalRope" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="chooseSetSwitchRope">
+                                        <label class="form-check-label fw-bold" for="chooseSetSwitchRope">Select Relic Set</label>
+                                    </div>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <button type="button" class="btn" data-bs-dismiss="modal">
+                                        <img class="img-fluid rounded-2" src="rsc/relics_png/hertas_rope.png" width="64px" onclick="changeRelic('hertas', 'rope')">
+                                    </button>
+                                    <button type="button" class="btn" data-bs-dismiss="modal">
+                                        <img class="img-fluid rounded-2" src="rsc/relics_png/belobogs_rope.png" width="64px" onclick="changeRelic('belobogs', 'rope')">
+                                    </button>
+                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/ipcs_rope.png" width="64px" onclick="changeRelic('ipcs', 'rope')"></button>
+                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/planet_rope.png" width="64px" onclick="changeRelic('planet', 'rope')"></button>
+                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/salsottos_rope.png" width="64px" onclick="changeRelic('salsottos', 'rope')"></button>
+                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/talias_rope.png" width="64px" onclick="changeRelic('talias', 'rope')"></button>
+                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/vonwacqs_rope.png" width="64px" onclick="changeRelic('vonwacqs', 'rope')"></button>
+                                    <button type="button" class="btn" data-bs-dismiss="modal"><img class="img-fluid rounded-2" src="rsc/relics_png/xianzhou_rope.png" width="64px" onclick="changeRelic('xianzhou', 'rope')"></button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
         </div>
     </div>
 </body>
     <script src="js/bootstrap.bundle.js"></script>
+    <script>
+        document.getElementById("dkott").focus()
+    </script>
     <script src="queryToDB.js"></script>
     <script src="charactersAndLightCones.js"></script>
     <script src="characterTraces.js"></script>
