@@ -48,4 +48,16 @@ Dalam kolom kedua, adalah menu equipment dan enemy. Menu equipment hampir mirip 
 ![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/687afba7-8e94-4eea-92b8-7daef0dcb73f)
 
 Merupakan kolom ketiga dan terakhir yang berisi kumpulan input yang user isi, yang digunakan untuk menghitung damage berdasarkan formula yang tersedia di [SRL](https://srl.keqingmains.com/combat-mechanics/damage/damage-formula).
-Input yang user dapat isi adalah input yang tidak dalam bentuk *disabled*. Input-input yang dalam bentuk *disabled* dihitung otomatis berdasarkan formula yang ada.
+Input yang user dapat isi adalah input yang tidak dalam bentuk *disabled*. Input-input yang dalam bentuk *disabled* dihitung otomatis berdasarkan formula yang digunakan.
+
+
+## Responsive
+Web ini responsive, dengan semakin pendek lebar layar maka kolom akan tersusun atas-kebawah, sedang dimana laptop tersusun kiri-kanan
+### Desktop / Laptop (width 1920px)
+![screencapture-localhost-hsr-calc-prj-2023-06-19-21_23_48](https://github.com/mfr03/ProyekWeb1/assets/108723167/e93f1043-d1d8-4d6e-ae78-ee48075098cc)
+### Tablet (width 768px)
+![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/50f02ed8-d0cf-4d71-b974-24026cdd8f8e)
+### Mobile-Iphone SE (width 375px)
+![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/ab00ebbf-4937-4973-b3f1-4345d1ebc462)
+
+## Direct Feedback
