@@ -10,8 +10,9 @@ HSR Calculator merupakan proyek website untuk mengfasilitasi pemain-pemain game 
 mempermudah pemain untuk mengukur kemampuan teoritis dan sinergi suatu karakter dengan kombinasi light cone, relics, dan berbagai macam buff terhadap suatu musuh.
 
 # Kriteria Penilaian
+![screencapture-localhost-hsr-calc-prj-2023-06-19-21_23_48](https://github.com/mfr03/UASPPW1_22-493719-SV-20726_HSR-DMG-CALCULATOR/assets/108723167/176483b4-b2ac-41ed-83fb-dd292d39135b)
 
-![screencapture-localhost-hsr-calc-prj-2023-06-19-21_23_48](https://github.com/mfr03/ProyekWeb1/assets/108723167/e93f1043-d1d8-4d6e-ae78-ee48075098cc)
+
 
 ## Desain
 
@@ -20,8 +21,8 @@ yang mempengaruhi kalkukasi damage.
 
 ### Characters & Light Cone
 
-![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/f20b1822-db01-4031-b4f2-4bcc16369e43)
-![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/7d1e6c54-c389-4475-82ef-f2839f607fad)
+![image](https://github.com/mfr03/UASPPW1_22-493719-SV-20726_HSR-DMG-CALCULATOR/assets/108723167/2e28a30e-0c13-432b-b2e2-2a8b14777a89)
+![image](https://github.com/mfr03/UASPPW1_22-493719-SV-20726_HSR-DMG-CALCULATOR/assets/108723167/121e0ecb-8c94-48f9-9c8f-808b9dd1a34b)
 
 
 Dalam kolom pertama terdapat menu karakter dan light cone, yang berisi informasi-informasi relevan terhadap karakter dan light cone yang user dapat 
@@ -31,21 +32,26 @@ Untuk mengubah dari menu karakter menuju light cone, atau sebaliknya, dapat dila
 Dalam mengubah karakter maupun light cone, dapat mengklik gambarnya untuk membuka menu (modal bootstrap) yang berisi seleksi-seleksi yang ada. Dengan mengklik salah satu dari
 seleksi, akan menggubah informasi-informasi relevan terhadap pilihan tersebut.
 
-![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/b79890c0-29bf-4af5-9632-11b182fa1e47)
-![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/d09aed1b-bad6-4a93-aca0-f494e5352abc)
+![image](https://github.com/mfr03/UASPPW1_22-493719-SV-20726_HSR-DMG-CALCULATOR/assets/108723167/d7d7fbd8-516b-4eed-a6bd-81c06b34d27c)
+![image](https://github.com/mfr03/UASPPW1_22-493719-SV-20726_HSR-DMG-CALCULATOR/assets/108723167/975338ca-aee0-479f-af2c-8f284c87786e)
+
+
 
 ### Equipment & Enemy
 
-![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/ef008b79-b358-431e-8b37-b5e631e2ba10)
-![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/af50d393-1f82-4de4-a25b-cad2aa26388f)
+![image](https://github.com/mfr03/UASPPW1_22-493719-SV-20726_HSR-DMG-CALCULATOR/assets/108723167/bd9c0911-8eaf-4bf6-9791-f2aa6166b471)
+![image](https://github.com/mfr03/UASPPW1_22-493719-SV-20726_HSR-DMG-CALCULATOR/assets/108723167/b6880519-c3a9-4343-ad6c-90a540f5dd10)
+
 
 Dalam kolom kedua, adalah menu equipment dan enemy. Menu equipment hampir mirip seperti menu karakter dan light cone dimana jika mengklik akan muncul menu beriisi seleksi-seleksi yang ada, dengan perbedaan jika memilih untuk mengambil satu set, maka akan merubah pilihan menjadi satu set baru. Sedangkan menu enemies adalah kumpulan-kumpulan debuff atau affliction yang musuh alami.
 
-![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/5c9c7c99-0a72-48d5-8ef7-2c4fa931523a)
-![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/760a452e-5959-4108-b45d-974c4fd25447)
+![image](https://github.com/mfr03/UASPPW1_22-493719-SV-20726_HSR-DMG-CALCULATOR/assets/108723167/cbfa1f5e-513d-4434-8552-001c96e24ebb)
+![image](https://github.com/mfr03/UASPPW1_22-493719-SV-20726_HSR-DMG-CALCULATOR/assets/108723167/e29b8d89-08bc-482c-b2f8-9fae5dac66b8)
+
 
 ### Calculated Result
-![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/687afba7-8e94-4eea-92b8-7daef0dcb73f)
+![image](https://github.com/mfr03/UASPPW1_22-493719-SV-20726_HSR-DMG-CALCULATOR/assets/108723167/6bb67bfb-f9f6-4238-b620-71f1e86469f7)
+
 
 Merupakan kolom ketiga dan terakhir yang berisi kumpulan input yang user isi, yang digunakan untuk menghitung damage berdasarkan formula yang tersedia di [SRL](https://srl.keqingmains.com/combat-mechanics/damage/damage-formula).
 Input yang user dapat isi adalah input yang tidak dalam bentuk *disabled*. Input-input yang dalam bentuk *disabled* dihitung otomatis berdasarkan formula yang digunakan.
@@ -64,11 +70,12 @@ Dalam singkatnya, berikutlah kode yang bertugas untuk membuat halaman responsive
 </div>
 ```
 ### Desktop / Laptop (width 1920px)
-![screencapture-localhost-hsr-calc-prj-2023-06-19-21_23_48](https://github.com/mfr03/ProyekWeb1/assets/108723167/e93f1043-d1d8-4d6e-ae78-ee48075098cc)
+![screencapture-localhost-hsr-calc-prj-2023-06-19-21_23_48](https://github.com/mfr03/UASPPW1_22-493719-SV-20726_HSR-DMG-CALCULATOR/assets/108723167/176483b4-b2ac-41ed-83fb-dd292d39135b)
 ### Tablet (width 768px)
-![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/50f02ed8-d0cf-4d71-b974-24026cdd8f8e)
+![image](https://github.com/mfr03/UASPPW1_22-493719-SV-20726_HSR-DMG-CALCULATOR/assets/108723167/46a796b6-4a80-4b47-b878-6ba57a6bc3d0)
 ### Mobile-Iphone SE (width 375px)
-![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/ab00ebbf-4937-4973-b3f1-4345d1ebc462)
+![image](https://github.com/mfr03/UASPPW1_22-493719-SV-20726_HSR-DMG-CALCULATOR/assets/108723167/345db833-ac84-4b09-ad0d-5e3291bedb0e)
+
 
 ## Direct Feedback
 Pengguna mendapatkan feedback dalam bentuk perubahan angka damage ataupun base stats dengan mengubah parameter yang tersedia (input fields/modal). Berikut ini contoh salah satu alur kerja callStack yang memberi feedback kepada user.
@@ -202,8 +209,9 @@ yang merupakan representasi dari formula [SRL](https://srl.keqingmains.com/comba
 ## Konten dinamis
 Jika pengguna mengganti seleksi karakter, light cone, ataupun mengganti relic set maka deskripsi yang keluar akan berbeda.
 
-![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/49e18851-20cd-4224-a9ef-1b17ada2b64a)
-![image](https://github.com/mfr03/ProyekWeb1/assets/108723167/7951f8eb-9cff-47e7-abde-74cc81d02487)
+![image](https://github.com/mfr03/UASPPW1_22-493719-SV-20726_HSR-DMG-CALCULATOR/assets/108723167/0983bad6-1833-4789-8f8a-b7fdb71dac55)
+![image](https://github.com/mfr03/UASPPW1_22-493719-SV-20726_HSR-DMG-CALCULATOR/assets/108723167/605a52e8-7413-4cec-98d8-8246b10f065d)
+
 
 Prosesnya hampir mirip seperti yang ada di bagian direct feedback, hanya saja menggunakan file php getCharaTalentDesc, getConeDesc, getRelicDesc pada masing-masing konten yang akan diambil dari database. Berikut salah satu file phpnya.
 ```php
